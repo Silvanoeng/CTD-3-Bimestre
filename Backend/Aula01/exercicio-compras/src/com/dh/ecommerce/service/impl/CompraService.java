@@ -1,8 +1,8 @@
 package com.dh.ecommerce.service.impl;
 
+import com.dh.ecommerce.model.Cartao;
 import com.dh.ecommerce.model.Endereco;
 import com.dh.ecommerce.model.Produto;
-import com.dh.ecommerce.model.Cartao;
 import com.dh.ecommerce.service.ICompraService;
 
 import java.util.Arrays;
@@ -29,5 +29,10 @@ public class CompraService implements ICompraService {
            }
 
         }
+    }
+
+    @Override
+    public String toString() {
+        return "" + armazemService;
     }
 }

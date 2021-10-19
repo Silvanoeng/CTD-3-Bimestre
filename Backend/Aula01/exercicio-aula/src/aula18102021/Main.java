@@ -1,5 +1,10 @@
 package aula18102021;
 
+import aula18102021.model.Cartao;
+import aula18102021.model.Produto;
+import aula18102021.service.impl.FachadaDesconto;
+import aula18102021.service.IFachadaDesconto;
+
 public class Main {
     public static void main(String[] args) {
 

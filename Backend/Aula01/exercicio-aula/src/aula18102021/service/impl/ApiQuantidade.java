@@ -1,4 +1,4 @@
-package aula18102021;
+package aula18102021.service.impl;
 
 public class ApiQuantidade {
     public int desconto(int quantidade) {

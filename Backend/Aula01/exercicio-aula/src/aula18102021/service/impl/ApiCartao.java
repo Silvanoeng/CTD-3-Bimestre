@@ -1,4 +1,6 @@
-package aula18102021;
+package aula18102021.service.impl;
+
+import aula18102021.model.Cartao;
 
 public class ApiCartao {
     public int desconto(Cartao cartao){

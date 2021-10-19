@@ -1,6 +1,13 @@
-package aula18102021;
+package aula18102021.service.impl;
 
-public class FachadaDesconto implements IFachadaDesconto{
+import aula18102021.model.Cartao;
+import aula18102021.model.Produto;
+import aula18102021.service.IFachadaDesconto;
+import aula18102021.service.impl.ApiCartao;
+import aula18102021.service.impl.ApiProduto;
+import aula18102021.service.impl.ApiQuantidade;
+
+public class FachadaDesconto implements IFachadaDesconto {
 
     private ApiCartao apiCartao;
     private ApiProduto apiProduto;

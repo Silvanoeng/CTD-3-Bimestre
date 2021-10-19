@@ -1,4 +1,4 @@
-package aula18102021;
+package aula18102021.model;
 
 public class Cartao {
 

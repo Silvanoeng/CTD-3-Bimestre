@@ -5,11 +5,10 @@ import com.dh.pagamento.service.TipoDeCartao;
 import java.time.LocalDate;
 
 public class CartaoDebito extends TipoDeCartao {
-    private LocalDate dataVencimento;
     private double saldoDisponivel;
 
     public CartaoDebito(LocalDate dataVencimento, double saldoDisponivel) {
-        this.dataVencimento = dataVencimento;
+        super(dataVencimento);
         this.saldoDisponivel = saldoDisponivel;
     }
 
@@ -21,6 +20,7 @@ public class CartaoDebito extends TipoDeCartao {
     @Override
     public void processadorDebito(double valor) {
         if (this.saldoDisponivel>valor){
+            this.saldoDisponivel-=valor;
             System.out.println("Pagamento efetuado.");
         } else {
             System.out.println("Saldo insuficiente.");

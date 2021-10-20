@@ -5,14 +5,13 @@ import com.dh.pagamento.service.TipoDeCartao;
 import java.time.LocalDate;
 
 public class CartaoCredito extends TipoDeCartao {
-    private LocalDate dataVencimento;
     private double limite;
     private double saldoUtilizado;
 
-    public CartaoCredito(LocalDate dataVencimento, double limite, double saldoUtilizado) {
-        this.dataVencimento = dataVencimento;
+    public CartaoCredito(LocalDate dataVencimento, double limite) {
+        super(dataVencimento);
         this.limite = limite;
-        this.saldoUtilizado = saldoUtilizado;
+        this.saldoUtilizado = 0;
     }
 
     @Override

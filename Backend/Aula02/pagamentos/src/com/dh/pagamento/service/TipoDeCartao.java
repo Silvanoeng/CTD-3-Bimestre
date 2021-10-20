@@ -4,7 +4,10 @@ import java.time.LocalDate;
 
 public abstract class TipoDeCartao {
     private LocalDate dataVencimento;
-    
+
+    public TipoDeCartao(LocalDate dataVencimento) {
+        this.dataVencimento = dataVencimento;
+    }
 
     public void pagamento(String tipo, double valor){
 

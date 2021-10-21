@@ -13,5 +13,8 @@ public class Main {
 
         Cardapio pedido04 = new Vegetariano("Cogumelos", 26.50);
         pedido04.novoPedido();
+
+        double total = pedido01.calcularPreco()+pedido02.calcularPreco()+pedido03.calcularPreco()+pedido04.calcularPreco();
+        System.out.printf("\nO total dos pedidos deu R$ %.2f.",total);
     }
 }

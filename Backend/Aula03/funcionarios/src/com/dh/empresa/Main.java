@@ -12,8 +12,10 @@ public class Main {
 
         func1.addAfiliado(afi1);
 
-        System.out.println(func1.mostrarCategoria());
-        System.out.println(func2.mostrarCategoria());
-        System.out.println(afi1.mostrarCategoria());
+        func1.mostrarCategoria();
+        func2.mostrarCategoria();
+        afi1.mostrarCategoria();
+        afi2.mostrarCategoria();
+        afi3.mostrarCategoria();
     }
 }

@@ -1,4 +1,4 @@
-package com.dh.empresa;
+package com.dh.empresa.service;
 
 //validação que usa propriedades de subclasse apenas!!
 //Classe abstrata Vendedor - aqui vai o Template Method
@@ -19,10 +19,14 @@ public abstract class Vendedor {
     public void mostrarCategoria(){
         String categoria = "";
         int num = calcularPontos();
-        if (num<20) {categoria = "novato";}
-        if (num>19 && num<31) {categoria = "aprendiz";}
-        if (num>30 && num<41) {categoria = "bom";}
-        if (num>40) {categoria = "mestre";}
-        System.out.println(this.nome + " fez " + num + " pontos, esta categorizado como "+ categoria);
+        if (num<20) {categoria = "novato.";}
+        if (num>19 && num<31) {categoria = "aprendiz.";}
+        if (num>30 && num<41) {categoria = "bom.";}
+        if (num>40) {categoria = "mestre.";}
+        System.out.println(this.nome + " fez " + num + " pontos, esta categorizado como vendedor "+ categoria);
+    }
+
+    public String getNome() {
+        return nome;
     }
 }

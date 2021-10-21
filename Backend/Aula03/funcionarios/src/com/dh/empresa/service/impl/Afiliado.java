@@ -1,6 +1,8 @@
-package com.dh.empresa;
+package com.dh.empresa.service.impl;
 
-public class Afiliado extends Vendedor{
+import com.dh.empresa.service.Vendedor;
+
+public class Afiliado extends Vendedor {
 
     public Afiliado(String nome){
         super.nome = nome;

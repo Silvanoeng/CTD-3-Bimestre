@@ -17,5 +17,6 @@ public class CheckQuality {
         peso.setVerifica(emvalagem);
     }
     public void verificarQualidade (Artigo produto) {
+        System.out.println("Analisando o produto "+produto.getNome()+".");
         this.analisa.avaliarProduto(produto);}
 }

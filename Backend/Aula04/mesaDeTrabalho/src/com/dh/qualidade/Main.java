@@ -11,9 +11,9 @@ public class Main {
         Artigo prod03 = new Artigo("Massa", 1002, 1310, "saudável" );
 
         CheckQuality teste01 = new CheckQuality();
-        teste01.verificarQualidade(prod01);
-        teste01.verificarQualidade(prod02);
-        teste01.verificarQualidade(prod03);
+        teste01.avaliarProduto(prod01);
+        teste01.avaliarProduto(prod02);
+        teste01.avaliarProduto(prod03);
 
     }
 

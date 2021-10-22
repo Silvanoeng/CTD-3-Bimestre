@@ -5,7 +5,7 @@ import com.dh.qualidade.service.impl.Embalogem;
 import com.dh.qualidade.service.impl.Lote;
 import com.dh.qualidade.service.impl.Peso;
 
-public class CheckQuality {
+public class CheckQuality extends PadraoQualidade{
     PadraoQualidade analisa;
 
     public CheckQuality () {
@@ -16,7 +16,7 @@ public class CheckQuality {
         analisa.setVerifica(peso);
         peso.setVerifica(emvalagem);
     }
-    public void verificarQualidade (Artigo produto) {
+    public void avaliarProduto (Artigo produto) {
         System.out.println("Analisando o produto "+produto.getNome()+".");
         this.analisa.avaliarProduto(produto);}
 }

@@ -12,6 +12,5 @@ public class Lote extends PadraoQualidade {
         }else {
             System.out.println("O lote está errado.");
         }
-
     }
 }

@@ -16,7 +16,7 @@ public class GradeDeFilmeProxy implements IGradeDeFilmes {
 
     @Override
     public Filme getFilme(String nome) {
-        Filme filmeEscolhido=null;
+
             if (ipCliente.getIp01() >= 0 && ipCliente.getIp01() < 50) {
                 GradeDeFilmes argentina = new GradeDeFilmes(filmes.getPais("Argentina"));
                 return argentina.getFilme(nome);
@@ -30,6 +30,7 @@ public class GradeDeFilmeProxy implements IGradeDeFilmes {
                 GradeDeFilmes colombia = new GradeDeFilmes(filmes.getPais("Colombia"));
                 return colombia.getFilme(nome);
             }
-        return filmeEscolhido;
+            throw new FilmeNaoHabilitadoException("Ainda não oferecemos nossos serviços no seu país.");
+
     }
 }

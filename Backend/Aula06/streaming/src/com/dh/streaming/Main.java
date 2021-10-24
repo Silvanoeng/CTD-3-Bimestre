@@ -2,13 +2,11 @@ package com.dh.streaming;
 
 import com.dh.streaming.componentes.Cliente;
 import com.dh.streaming.componentes.Filme;
+import com.dh.streaming.componentes.FilmeNaoHabilitadoException;
 import com.dh.streaming.service.IGradeDeFilmes;
 import com.dh.streaming.service.impl.GradeDeFilmeProxy;
 import com.dh.streaming.service.impl.GradeDeFilmes;
-
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -28,12 +26,29 @@ public class Main {
         Filme f14 = new Filme("Zumbi 2", "Colombia", "www.filmes.com/Zumbi2");
         Filme f15 = new Filme("Zumbi 3", "Colombia", "www.filmes.com/Zumbi3");
         GradeDeFilmes netFlix = new GradeDeFilmes(Arrays.asList(f01, f02, f03, f04, f05, f06, f07, f08, f09, f10, f11, f12, f13, f14, f15));
-        Cliente cl01 = new Cliente(120, 100, 200, 122);
-        IGradeDeFilmes buscador = new GradeDeFilmeProxy(cl01,netFlix);
-        System.out.println(buscador.getFilme("Zumbi 2").getLinkDeReproducao());
 
+        Cliente cl01 = new Cliente(20, 100, 200, 122);
+        IGradeDeFilmes buscador01 = new GradeDeFilmeProxy(cl01,netFlix);
+        try {
+            System.out.println("Cliente 01:\n" +buscador01.getFilme("Zumbi 2").getLinkDeReproducao());
+        } catch (FilmeNaoHabilitadoException e) {
+            System.out.println("Cliente 01:\n" + e.getMessage());
+        }
 
+        Cliente cl02 = new Cliente(70, 100, 200, 122);
+        IGradeDeFilmes buscador02 = new GradeDeFilmeProxy(cl02,netFlix);
+        try {
+            System.out.println("Cliente 02:\n" +buscador02.getFilme("Zumbi 2").getLinkDeReproducao());
+        } catch (FilmeNaoHabilitadoException e) {
+            System.out.println("Cliente 02:\n" + e.getMessage());
+        }
+
+        Cliente cl03 = new Cliente(120, 100, 200, 122);
+        IGradeDeFilmes buscador03 = new GradeDeFilmeProxy(cl03,netFlix);
+        try {
+            System.out.println("Cliente 03:\n" +buscador03.getFilme("Zumbi 2").getLinkDeReproducao());
+        } catch (FilmeNaoHabilitadoException e) {
+            System.out.println("Cliente 03:\n" + e.getMessage());
+        }
     }
-
-
 }

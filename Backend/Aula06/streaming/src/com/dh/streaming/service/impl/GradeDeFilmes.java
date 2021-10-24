@@ -1,8 +1,8 @@
 package com.dh.streaming.service.impl;
 
 import com.dh.streaming.componentes.Filme;
+import com.dh.streaming.componentes.FilmeNaoHabilitadoException;
 import com.dh.streaming.service.IGradeDeFilmes;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,13 +32,12 @@ public class GradeDeFilmes implements IGradeDeFilmes {
 
     @Override
     public Filme getFilme(String nome) {
-        Filme filmeEscolhido=null;
         for (Filme filme: filmes) {
             if (filme.getNome().equalsIgnoreCase(nome)){
                 return filme;
             }
         }
-        return filmeEscolhido;
+        throw new FilmeNaoHabilitadoException("Filme não disponível.");
     }
 
 }

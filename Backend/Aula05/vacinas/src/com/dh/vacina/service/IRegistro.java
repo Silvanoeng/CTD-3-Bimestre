@@ -1,9 +1,8 @@
 package com.dh.vacina.service;
 
+import com.dh.vacina.componente.Pessoa;
+
 public interface IRegistro {
 
-
-    public Object[] informacoes(){
-        Object[] informacao = new Object[2];
-    }
+    public void vacinar(Pessoa pessoa);
 }

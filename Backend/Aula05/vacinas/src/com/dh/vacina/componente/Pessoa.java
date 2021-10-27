@@ -1,21 +1,21 @@
 package com.dh.vacina.componente;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Pessoa {
     private String nome;
     private String sobrenome;
-    private String RG:
+    private String rg;
     private String nomeVacina;
-    private Date dataVacina;
+    private LocalDate dataVacina;
 
 
-    public Pessoa(String nome, String sobrenome, String RG, String nomeVacina, Date dataVacina) {
+    public Pessoa(String nome, String sobrenome, String rg, String nomeVacina, LocalDate dataVacina) {
         this.nome = nome;
         this.sobrenome = sobrenome;
-        this.RG = RG;
+        this.rg = rg;
         this.nomeVacina = nomeVacina;
-        this.dataVacina = dataVacina;
+        this.dataVacina = dataVacina ;
     }
 
     public String getNome() {
@@ -34,12 +34,12 @@ public class Pessoa {
         this.sobrenome = sobrenome;
     }
 
-    public String getRG() {
-        return RG;
+    public String getRg() {
+        return rg;
     }
 
-    public void setRG(String RG) {
-        this.RG = RG;
+    public void setRG(String rg) {
+        this.rg = rg;
     }
 
     public String getNomeVacina() {
@@ -50,11 +50,11 @@ public class Pessoa {
         this.nomeVacina = nomeVacina;
     }
 
-    public Date getDataVacina() {
+    public LocalDate getDataVacina() {
         return dataVacina;
     }
 
-    public void setDataVacina(Date dataVacina) {
+    public void setDataVacina(LocalDate dataVacina) {
         this.dataVacina = dataVacina;
     }
 

@@ -12,8 +12,29 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
             Roupa roupa1 = RoupaFactory.fabricarRoupa("M", "camisa", false, true);
 
+            Roupa roupa2 = RoupaFactory.fabricarRoupa("p", "blusa", true, false);
+
             assertEquals("XS", roupa.getTamanho());
             assertEquals("M", roupa1.getTamanho());
+            assertEquals("p", roupa2.getTamanho());
+            assertEquals("blusa", roupa2.getTipo());
+            assertEquals("vestido", roupa.getTipo());
+
+        }
+
+        @Test
+        void tamanhoFabrica() {
+            Roupa roupa = RoupaFactory.fabricarRoupa("XS", "vestido", true, false);
+
+            Roupa roupa1 = RoupaFactory.fabricarRoupa("M", "camisa", false, true);
+
+            Roupa roupa2 = RoupaFactory.fabricarRoupa("p", "blusa", true, false);
+
+
+
+
+            assertEquals("3", RoupaFactory.tamanhoFabrica());
+
         }
 
     }

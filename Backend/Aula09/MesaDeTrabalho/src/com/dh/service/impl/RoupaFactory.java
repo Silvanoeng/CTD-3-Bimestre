@@ -1,6 +1,5 @@
 package com.dh.service.impl;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class RoupaFactory {
     public static final Map<String, Map<String, Roupa>> MODELOS_ROUPA = new HashMap<>();
@@ -21,13 +20,25 @@ public class RoupaFactory {
         return roupa;
     }
 
-    public static void tamanhoFabrica(){
-        System.out.println("O tamanho da fabrica é " + MODELOS_ROUPA.size() + ".");
+    public static  int getTamanho(){ return MODELOS_ROUPA.size();}
+    public static  int getpedidos(){
+        for (int i=0; i<MODELOS_ROUPA.size(); i++){
+            Set<String> busca = (MODELOS_ROUPA.keySet());
+            busca.
+        }
+        return MODELOS_ROUPA.;}
+
+    public static void relatorioFabrica(){
+        System.out.println("O tamanho da fabrica é " + getTamanho() + " e tem " + getpedidos() + "pedidos.");
     }
 
     public static void listarTamanho(String tipo){
-        System.out.println(MODELOS_ROUPA.get(tipo).keySet());
-        System.out.println(MODELOS_ROUPA.get(tipo).toString());
+
+
+            System.out.println(MODELOS_ROUPA.get(tipo).toString());
+
     }
+
+
 
 }

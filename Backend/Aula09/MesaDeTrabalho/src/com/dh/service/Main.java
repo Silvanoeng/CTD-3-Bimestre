@@ -14,9 +14,10 @@ public class Main {
         Roupa roupa6 = RoupaFactory.fabricarRoupa("M", "camiseta", true, false);
         Roupa roupa7 = RoupaFactory.fabricarRoupa("M", "blusa", true, false);
 
-        RoupaFactory.tamanhoFabrica();
+        RoupaFactory.relatorioFabrica();
         RoupaFactory.listarTamanho("camiseta");
         RoupaFactory.listarTamanho("vestido");
+        RoupaFactory.listaModelos();
 
 
 

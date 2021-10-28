@@ -48,6 +48,6 @@ public class Roupa {
     @Override
     public String toString() {
 
-        return  "tamanho, tipo:" + tipo + ", nova:" + nova + ", importada:" + importada;
+        return  "tamanho " + tamanho + ", tipo:" + tipo + ", nova:" + nova + ", importada:" + importada;
     }
 }

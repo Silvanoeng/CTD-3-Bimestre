@@ -12,7 +12,7 @@ public class Main {
             "SOBRENOME varchar(100) NOT NULL, " +
             "IDADE INT NOT NULL)";
 
-    private static final String sqlInsert = "INSERT INTO USUARIO (ID, PRIMEIRO_NOME, SOBRENOME, IDADE) VALUES (1, 'Maria', 'Aparecida', 50)";
+    private static final String sqlInsert = "INSERT INTO USUARIO (ID, PRIMEIRO_NOME, SOBRENOME, IDADE) VALUES (1, 'Maria', 'Aparecida', 65)";
     private static final String sqlInsert2 = "INSERT INTO USUARIO (ID, PRIMEIRO_NOME, SOBRENOME, IDADE) VALUES (2, 'Zé', 'Maria', 40)";
     private static final String sqlInsert3 = "INSERT INTO USUARIO (ID, PRIMEIRO_NOME, SOBRENOME, IDADE) VALUES (3, 'Tiririca', 'de Jesus', 25)";
 
@@ -53,6 +53,6 @@ public class Main {
 
     public static Connection getConnection() throws Exception{
         Class.forName("org.h2.Driver").getDeclaredConstructor().newInstance();
-        return DriverManager.getConnection("jdbc:h2:~/test", "sa","");
+        return DriverManager.getConnection("jdbc:h2:~/test02", "sa","");
     }
 }

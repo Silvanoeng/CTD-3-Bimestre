@@ -52,7 +52,7 @@ import java.sql.Statement;
 
         public static Connection getConnection() throws Exception{
             Class.forName("org.h2.Driver").getDeclaredConstructor().newInstance();
-            return DriverManager.getConnection("jdbc:h2:mem:testdb", "sa","");
+            return DriverManager.getConnection("jdbc:h2:~/test01", "sa","");
         }
     }
 

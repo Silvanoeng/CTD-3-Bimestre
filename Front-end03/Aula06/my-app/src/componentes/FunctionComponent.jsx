@@ -2,7 +2,7 @@ import React from 'react'
  
 const functionComponent = () => {
    return (
-       <li>SeuNome trará batata-frita</li>
+       <li>Silvano trará batata-frita.</li>
    )
 }
 export default functionComponent

@@ -27,8 +27,10 @@ public class Main {
         }
 
     }
-    public static Connection getConnection() throws Exception {
-        Class.forName("org.h2.Driver").newInstance();
 
-    }
+        public static Connection getConnection() throws Exception {
+            Class.forName("org.h2.Driver").newInstance();
+            return DriverManager.getConnection("jdbc:h2:~/test;", "sa", "");
+        }
+
 }

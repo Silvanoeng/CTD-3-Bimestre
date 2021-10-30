@@ -8,7 +8,7 @@ public class Main {
             "TIPO varchar(100) NOT NULL)";
 
     private static final String SQL_INSERT = "INSERT INTO ANIMAIS (ID, NOME, TIPO) VALUES (1, 'Pancho', 'Cachorro')";
-    private static final String SQL_INSERT2 = "INSERT INTO ANIMAIS (ID,NOME, TIPO) VALUES (2,'Pillo', 'Gato')";
+    private static final String SQL_INSERT2 = "INSERT INTO ANIMAIS (ID,NOME, TIPO) VALUES (2,'Pilla', 'Gato')";
     private static final String SQL_INSERT3 = "INSERT INTO ANIMAIS (ID,NOME, TIPO) VALUES (3,'Cepillo', 'Elefante')";
     private static final String SQL_INSERT4 = "INSERT INTO ANIMAIS (ID,NOME, TIPO) VALUES (4,'Pepe', 'Cachorro')";
     private static final String SQL_INSERT5 = "INSERT INTO ANIMAIS (ID,NOME, TIPO) VALUES (5,'Rolo', 'Cavalo')";

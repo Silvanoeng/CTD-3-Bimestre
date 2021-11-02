@@ -1,11 +1,10 @@
 import BannerNovo from '../componentes/Banner/index';
 import Footer from '../componentes/Footer/index';
 import Header from '../componentes/Header/index';
-import '../styles/App.css';
 
 function App() {
+  const nomeEmpresa='DH School';
   const nome = 'Lucas';
-  const fotoBanner = 'https://cdn.pixabay.com/photo/2016/05/13/14/16/solar-rays-1390059_960_720.jpg'
   var data = new Date();
   const diaDaSemana = ["domingo", "segunda-feira", "terça-feira", "quarta-feira", "quinta-feira", "sexta-feira", "sábado"]
   const dia = diaDaSemana[data.getDay()];
@@ -22,17 +21,17 @@ function App() {
 
   return (
     <>
-    <div className="Header">
-      <Header>DH School</Header>
+    <div>
+      <Header nomeEmpresa={nomeEmpresa}/>
 
     </div>
-    <div className="Banner">
+    <div className="fotoBanner">
       
-      <BannerNovo nome={nome} pronome1={pronome1} pronome2={pronome2} foto={fotoBanner} dia={dia} />
+      <BannerNovo nome={nome} pronome1={pronome1} pronome2={pronome2} dia={dia} />
 
     </div>
     <div className="Footer">
-      <Footer>Todos direitos reservado a DH. O uso desse material é exclusivo de {nome}.</Footer>
+      <Footer>Todos direitos reservado a {nomeEmpresa}. O uso desse material é exclusivo de {nome}.</Footer>
     </div>
     </>
   );

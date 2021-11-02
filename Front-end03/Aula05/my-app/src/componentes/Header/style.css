@@ -1,0 +1,38 @@
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    padding: 5px;
+    color: rgb(76, 87, 155);
+    font: 1rem Verdana, sans-serif;
+    background-color: rgb(191, 190, 199);
+}
+header h1:hover{
+    color: rgb(100, 100, 100);
+}
+
+  header ul{
+    display: flex;
+  }
+  
+  header ul li{
+    list-style-type: none;
+  }
+  
+  header li a{
+    text-decoration: none;
+    color: rgb(76, 87, 155);
+    padding: 20px;
+    font: 1.5rem Verdana, sans-serif;
+    transition: all .3s ease-in-out;
+  }
+  
+  header li a:hover{
+    color: rgb(100, 100, 100);
+    text-decoration: underline;
+  }

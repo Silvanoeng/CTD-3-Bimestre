@@ -1,12 +1,18 @@
 import './style.css';
 
-const Header = ({children}) => {
+const Header = ({nomeEmpresa}) => {
 
 
     return(
-        <div>
-            <p>{children}</p>
-        </div>
+        <header>
+            <h1>{nomeEmpresa}</h1>
+            <nav>
+                <ul>
+                    <li><a href="https://www.linkedin.com/feed/">Linkedin</a></li>
+                    <li><a href="https://github.com/">GitHub</a></li>
+                </ul>
+            </nav>
+        </header>
     );
 }
 

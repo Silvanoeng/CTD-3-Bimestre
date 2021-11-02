@@ -1,5 +1,6 @@
-import { PerguntaDoDia , BannerNovo } from '../componentes/Banner/index';
-
+import BannerNovo from '../componentes/Banner/index';
+import Footer from '../componentes/Footer/index';
+import Header from '../componentes/Header/index';
 import '../styles/App.css';
 
 function App() {
@@ -20,10 +21,20 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <PerguntaDoDia nome={nome} pronome1={pronome1} pronome2={pronome2} dia={dia}  />
-      <BannerNovo foto={fotoBanner} dia={dia} />
+    <>
+    <div className="Header">
+      <Header>DH School</Header>
+
     </div>
+    <div className="Banner">
+      
+      <BannerNovo nome={nome} pronome1={pronome1} pronome2={pronome2} foto={fotoBanner} dia={dia} />
+
+    </div>
+    <div className="Footer">
+      <Footer>Todos direitos reservado a DH. O uso desse material é exclusivo de {nome}.</Footer>
+    </div>
+    </>
   );
 }
 

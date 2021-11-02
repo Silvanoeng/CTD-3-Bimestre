@@ -1,20 +1,18 @@
-function PerguntaDoDia (props) {
+import './style.css'
+
+const BannerNovo = ({dia, foto, pronome1, pronome2, nome}) => {
+    const Redirecionar = () =>{
+       return window.open('https://br-playground.digitalhouse.com/login');
+    }
 
     return (
-        <div>
-            <p>Bom dia {props.nome}, desejamos que {props.pronome1} {props.dia} seja {props.pronome2}.</p>
-        </div>
-    )
-}
-
-function BannerNovo (props){
-    return (
-        <div>
-            <img src={props.foto} alt='Foto do banner da pagina'/>
-            <button>Iniciar os estudos de {props.dia}</button>
-        </div>
+        <>
+            <p>Bom dia {nome}, desejamos que {pronome1} {dia} seja {pronome2}.</p>
+            <img src={foto} alt='Foto do banner da pagina'/>
+            <button onClick={Redirecionar}>Iniciar os estudos de {dia}</button>
+        </>
     )
 
 }
 
-export { PerguntaDoDia , BannerNovo };
+export default BannerNovo;

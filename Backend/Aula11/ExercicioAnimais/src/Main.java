@@ -23,8 +23,8 @@ public class Main {
             Statement statement = connection.createStatement();
             statement.execute(SQL_CREATE_TABLE);
 
-            Statement statement1 = connection.createStatement();
-            statement1.execute(SQL_INSERT);
+
+            statement.execute(SQL_INSERT);
             //Statement statement = connection.createStatement();
             statement.execute(SQL_INSERT2);
             //Statement statement = connection.createStatement();

@@ -1,5 +1,6 @@
 package com.dh.empresa;
 
+import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
 
 import java.sql.Connection;
@@ -25,36 +26,27 @@ public class Main {
     private static final String delete = "DELETE FROM EMPRESA WHERE ID=1";
     private static final String delete2 = "DELETE FROM EMPRESA WHERE PRIMEIRO_NOME='João'";
 
-    private static final Logger logger = Logger.getLogger(Main.class);
+    final static Logger log = Logger.getLogger(Main.class);
 
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args){
+        BasicConfigurator.configure();
         Connection connection = null;
+        log.debug("Registrando um novo funcionário.");
         try {
             connection = getConnection();
             Statement statement = connection.createStatement();
             statement.execute(CREATE_TABLE);
 
             statement.execute(maria);
-            logger.info("Processo realizado com sucesso." + maria);
-
             statement.execute(joao);
-            logger.info("Processo realizado com sucesso." + joao);
-
             statement.execute(pedro);
-            logger.info("Processo realizado com sucesso." + pedro);
 
             statement.execute(update);
             statement.execute(delete);
             statement.execute(delete2);
-
-
-
-        }catch (Exception e){
-            e.printStackTrace();
-            e.getMessage();
-
-        }finally {
             connection.close();
+        } catch (Exception e) {
+            log.error("Erro: " + e.getMessage());
         }
 
     }
@@ -62,7 +54,5 @@ public class Main {
         Class.forName("org.h2.Driver").getDeclaredConstructor().newInstance();
         return DriverManager.getConnection("jdbc:h2:~/test03", "sa","");
     }
-
-
-
+    
 }

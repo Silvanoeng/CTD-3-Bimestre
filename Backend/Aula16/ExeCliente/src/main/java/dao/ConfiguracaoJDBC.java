@@ -11,26 +11,16 @@ public class ConfiguracaoJDBC {
     private String nomeUsuario;
     private String senha;
 
-//    CASCADE
+//    DROP TABLE IF EXISTS dentista;
 
-
-    private static final String SQL_CREATE_TABLE_PAC = "DROP TABLE IF EXISTS paciente; CREATE TABLE paciente " +
+    private static final String SQL_CREATE_TABLE_DEN = "CREATE TABLE dentista IF NOT EXISTS" +
             "(" +
-            "idPac int auto_increment primary key, " +
+            "idDen int auto_increment primary key, " +
+            "numeromatricula int," +
             "nome varchar(40), " +
-            "sobrenome varchar(100), " +
-            "RG varchar(25), " +
-            "dataDeCadastro varchar(25), " +
-            "idEnd int, " +
-            "FOREIGN KEY (idEnd) REFERENCES endereco (idEnd))";
+            "sobrenome varchar(100))";
 
-    private static final String SQL_CREATE_TABLE_END = "DROP TABLE IF EXISTS endereco; CREATE TABLE endereco " +
-            "(" +
-            "idEnd int auto_increment primary key, " +
-            "rua varchar(150), " +
-            "numero varchar(15), " +
-            "cidade varchar(50), " +
-            "estado varchar(50))";
+
 
     public ConfiguracaoJDBC(String jdbcDrive, String dbUrl, String nomeUsuario, String senha) {
         this.jdbcDrive = jdbcDrive;
@@ -51,8 +41,7 @@ public class ConfiguracaoJDBC {
         try {
             Connection connection = conectarBanco();
             Statement statement = connection.createStatement();
-            statement.execute(SQL_CREATE_TABLE_PAC);
-            statement.execute(SQL_CREATE_TABLE_END);
+            statement.execute(SQL_CREATE_TABLE_DEN);
             connection.close();
 
         }catch (Exception e){

@@ -35,8 +35,6 @@ public class PacienteDaoImpl implements IDao<Paciente> {
             if (keys1.next())
                 paciente.getEndereco().setIdEnd(keys1.getInt(1));
 
-            statement.close();
-            connection.close();
         } catch (Exception e) {
             e.printStackTrace();
         }

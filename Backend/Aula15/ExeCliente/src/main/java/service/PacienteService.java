@@ -1,7 +1,7 @@
 package service;
 
+
 import dao.IDao;
-import model.Endereco;
 import model.Paciente;
 
 public class PacienteService {
@@ -14,6 +14,7 @@ public class PacienteService {
     public Paciente salvar(Paciente paciente){
         return pacienteDao.salvar(paciente);
     }
+
 
 
 }

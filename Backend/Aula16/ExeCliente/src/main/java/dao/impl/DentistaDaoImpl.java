@@ -11,14 +11,15 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 
 public class DentistaDaoImpl implements IDao<Dentista> {
     private ConfiguracaoJDBC configuracaoJDBC;
     final static Logger log = Logger.getLogger(DentistaDaoImpl.class);
 
-    public DentistaDaoImpl(ConfiguracaoJDBC configuracaoJDBC) {
-        this.configuracaoJDBC = configuracaoJDBC;
+    public DentistaDaoImpl() {
+        this.configuracaoJDBC = new ConfiguracaoJDBC();
     }
 
     @Override
@@ -45,6 +46,38 @@ public class DentistaDaoImpl implements IDao<Dentista> {
     }
 
     @Override
+    public Dentista alterar(Dentista dentista) {
+        log.debug("Você está alterando os dados do dentista " + dentista.getNome() + ".");
+        Connection connection = configuracaoJDBC.conectarBanco();
+        Statement statement = null;
+        String query1 = String.format("UPDATE dentista set numeromatricula = '%s', nome = '%s', sobrenome = '%s' where id = '%s'",
+                dentista.getNumeroMatricula(), dentista.getNome(), dentista.getSobrenome(), dentista.getId());
+        String query2 = String.format("SELECT * FROM dentista where id = '%s'", dentista.getId());
+        try {
+            statement = connection.createStatement();
+            statement.executeUpdate(query1);
+            ResultSet buscar = statement.executeQuery(query2);
+            while (buscar.next())
+                dentista = criarNovoDentista(buscar);
+            statement.close();
+            connection.close();
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+        return dentista;
+    }
+
+    @Override
+    public void excluir(Integer id) {
+
+    }
+
+    @Override
+    public Optional<Dentista> buscar(Integer id) {
+        return Optional.empty();
+    }
+
+    @Override
     public List<Dentista> listarTodos() {
         log.debug("Registrando um novo dentista.");
         Connection connection = configuracaoJDBC.conectarBanco();
@@ -54,13 +87,9 @@ public class DentistaDaoImpl implements IDao<Dentista> {
         List<Dentista> dentistas = new ArrayList<>();
         try {
             statement = connection.createStatement();
-            ResultSet busca = statement.executeQuery(query);
-            while (busca.next()) {
-                Integer idDen = busca.getInt("idDen");
-                Integer numeroMatricula = busca.getInt("numeromatricula");
-                String nome = busca.getString("nome");
-                String sobrenome = busca.getString("sobrenome");
-                dentistas.add(new Dentista(idDen, numeroMatricula, nome, sobrenome));
+            ResultSet buscar = statement.executeQuery(query);
+            while (buscar.next()) {
+                dentistas.add(criarNovoDentista(buscar));
             }
             statement.close();
             connection.close();
@@ -68,6 +97,14 @@ public class DentistaDaoImpl implements IDao<Dentista> {
             throwables.printStackTrace();
         }
         return dentistas;
+    }
+
+    private Dentista criarNovoDentista(ResultSet buscar) throws SQLException {
+        Integer id = buscar.getInt("id");
+        Integer numeroMatricula = buscar.getInt("numeromatricula");
+        String nome = buscar.getString("nome");
+        String sobrenome = buscar.getString("sobrenome");
+        return new Dentista(id, numeroMatricula, nome, sobrenome);
     }
 
 }

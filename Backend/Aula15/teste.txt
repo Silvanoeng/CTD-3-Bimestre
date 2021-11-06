@@ -1,0 +1,7 @@
+Endereco endereco = new Endereco("Av Augusto de Lima", "444", "Belo Horizonte", "Minas Gerais");
+        Paciente p = pacienteService.salvar(new Paciente("Glauber", "Lima", "12345678", new Date(), endereco));
+        Endereco endereco1 = new Endereco("Av Paulista", "333", "São Paulo", "São Paulo");
+        Paciente p1 = pacienteService.salvar(new Paciente("Marcela", "Souza", "98765432", new Date(), endereco1));
+
+Endereco endereco = new Endereco("Av Vieira Souto", "123", "Rio de Janeiro", "Rio de Janeiro");
+        Paciente p = pacienteService.salvar(new Paciente("Thomas", "Pereira", "12309845", new Date(), endereco));

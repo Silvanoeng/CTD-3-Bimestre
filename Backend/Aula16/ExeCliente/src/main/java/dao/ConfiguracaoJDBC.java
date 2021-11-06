@@ -13,9 +13,9 @@ public class ConfiguracaoJDBC {
 
 //    DROP TABLE IF EXISTS dentista;
 
-    private static final String SQL_CREATE_TABLE_DEN = "CREATE TABLE dentista IF NOT EXISTS" +
+    private static final String SQL_CREATE_TABLE_DEN = "CREATE TABLE IF NOT EXISTS dentista" +
             "(" +
-            "idDen int auto_increment primary key, " +
+            "id int auto_increment primary key, " +
             "numeromatricula int," +
             "nome varchar(40), " +
             "sobrenome varchar(100))";
@@ -34,6 +34,7 @@ public class ConfiguracaoJDBC {
         this.dbUrl = "jdbc:h2:~/test";
         this.nomeUsuario = "sa";
         this.senha = "";
+
         criarTabela();
     }
 
@@ -43,6 +44,7 @@ public class ConfiguracaoJDBC {
             Statement statement = connection.createStatement();
             statement.execute(SQL_CREATE_TABLE_DEN);
             connection.close();
+            statement.close();
 
         }catch (Exception e){
             e.printStackTrace();

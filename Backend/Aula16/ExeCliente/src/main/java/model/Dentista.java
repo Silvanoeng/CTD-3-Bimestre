@@ -1,7 +1,7 @@
 package model;
 
 public class Dentista {
-    private Integer idDen;
+    private Integer id;
     private Integer numeroMatricula;
     private String nome;
     private String sobrenome;
@@ -13,8 +13,8 @@ public class Dentista {
         this.sobrenome = sobrenome;
     }
 
-    public Dentista(Integer idDen, Integer numeroMatricula, String nome, String sobrenome) {
-        this.idDen = idDen;
+    public Dentista(Integer id, Integer numeroMatricula, String nome, String sobrenome) {
+        this.id = id;
         this.numeroMatricula = numeroMatricula;
         this.nome = nome;
         this.sobrenome = sobrenome;
@@ -22,12 +22,12 @@ public class Dentista {
 
     public Dentista() { }
 
-    public Integer getIdDen() {
-        return idDen;
+    public Integer getId() {
+        return id;
     }
 
-    public void setIdDen(Integer idDen) {
-        this.idDen = idDen;
+    public void setIdDen(Integer id) {
+        this.id = id;
     }
 
     public Integer getNumeroMatricula() {
@@ -56,11 +56,8 @@ public class Dentista {
 
     @Override
     public String toString() {
-        return "Dentista{" +
-                "idDen=" + idDen +
-                ", numeroMatricula=" + numeroMatricula +
-                ", nome='" + nome + '\'' +
-                ", sobrenome='" + sobrenome + '\'' +
-                '}';
+        return "Nome: " + nome +
+                " Sobrenome: " + sobrenome +
+                " NumeroMatricula: " + numeroMatricula;
     }
 }

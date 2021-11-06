@@ -11,7 +11,6 @@ public class ConfiguracaoJDBC {
     private String nomeUsuario;
     private String senha;
 
-//    DROP TABLE IF EXISTS dentista;
 
     private static final String SQL_CREATE_TABLE_DEN = "CREATE TABLE IF NOT EXISTS dentista" +
             "(" +
@@ -37,6 +36,7 @@ public class ConfiguracaoJDBC {
 
         criarTabela();
     }
+
 
     private void criarTabela(){
         try {

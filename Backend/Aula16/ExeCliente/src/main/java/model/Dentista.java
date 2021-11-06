@@ -57,7 +57,7 @@ public class Dentista {
     @Override
     public String toString() {
         return "Nome: " + nome +
-                " Sobrenome: " + sobrenome +
-                " NumeroMatricula: " + numeroMatricula;
+                ", Sobrenome: " + sobrenome +
+                ", NumeroMatricula: " + numeroMatricula + ".";
     }
 }

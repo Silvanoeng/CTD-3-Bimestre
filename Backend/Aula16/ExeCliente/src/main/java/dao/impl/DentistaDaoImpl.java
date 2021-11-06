@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.Period;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -22,9 +23,9 @@ public class DentistaDaoImpl implements IDao<Dentista> {
         this.configuracaoJDBC = new ConfiguracaoJDBC();
     }
 
+
     @Override
     public Dentista salvar(Dentista dentista) {
-        log.debug("Registrando um novo dentista.");
         Connection connection = configuracaoJDBC.conectarBanco();
         Statement statement = null;
 
@@ -36,9 +37,9 @@ public class DentistaDaoImpl implements IDao<Dentista> {
             ResultSet keys = statement.getGeneratedKeys();
             if (keys.next())
                 dentista.setIdDen(keys.getInt(1));
-
             statement.close();
             connection.close();
+            log.debug("Registrando o dentista: " + dentista.getNome() + ".");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -47,39 +48,63 @@ public class DentistaDaoImpl implements IDao<Dentista> {
 
     @Override
     public Dentista alterar(Dentista dentista) {
-        log.debug("Você está alterando os dados do dentista " + dentista.getNome() + ".");
         Connection connection = configuracaoJDBC.conectarBanco();
         Statement statement = null;
-        String query1 = String.format("UPDATE dentista set numeromatricula = '%s', nome = '%s', sobrenome = '%s' where id = '%s'",
+        String query = String.format("UPDATE dentista set numeromatricula = '%s', nome = '%s', sobrenome = '%s' where id = '%s'",
                 dentista.getNumeroMatricula(), dentista.getNome(), dentista.getSobrenome(), dentista.getId());
-        String query2 = String.format("SELECT * FROM dentista where id = '%s'", dentista.getId());
         try {
             statement = connection.createStatement();
-            statement.executeUpdate(query1);
-            ResultSet buscar = statement.executeQuery(query2);
-            while (buscar.next())
-                dentista = criarNovoDentista(buscar);
+            statement.executeUpdate(query);
+            dentista = buscar(dentista.getId()).get();
             statement.close();
             connection.close();
         }catch (Exception e) {
             e.printStackTrace();
         }
+        log.debug("Dados atualizados: " + dentista);
         return dentista;
     }
 
     @Override
     public void excluir(Integer id) {
-
+        log.debug("Excluir dentista cadastrado com id: " + id + ".");
+        Connection connection = configuracaoJDBC.conectarBanco();
+        Statement statement = null;
+        Dentista dentista = buscar(id).get();
+        String query = "DELETE FROM dentista WHERE id = " + id;
+        try {
+            statement = connection.createStatement();
+            statement.executeUpdate(query);
+            statement.close();
+            connection.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public Optional<Dentista> buscar(Integer id) {
-        return Optional.empty();
+        log.debug("Busca dentista cadastrados com id: " + id + ".");
+        Connection connection = configuracaoJDBC.conectarBanco();
+        Statement statement = null;
+        String query = "SELECT * FROM dentista WHERE id = " + id;
+        Dentista dentista = null;
+        try {
+            statement = connection.createStatement();
+            ResultSet busca = statement.executeQuery(query);
+            while (busca.next())
+                dentista = criarNovoDentista(busca);
+            statement.close();
+            connection.close();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return dentista != null ? Optional.of(dentista): Optional.empty();
     }
 
     @Override
     public List<Dentista> listarTodos() {
-        log.debug("Registrando um novo dentista.");
+        log.debug("Listando todos os dentista cadastrados.");
         Connection connection = configuracaoJDBC.conectarBanco();
         Statement statement = null;
 

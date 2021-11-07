@@ -26,28 +26,28 @@ public class PacienteServiceTest {
     }
 
     @Test
-    public void cirarExcluir(){
-        Endereco end04 = new Endereco("Rua Bento Gonçalves", "123", "Tavares", "Rio Grande do Sul");
-        Paciente teste04 = pacienteService.salvarPaciente(new Paciente("Paulo", "Pereira", "12309845", new Date(), end04));
-        assertFalse(pacienteService.buscarPaciente(teste04.getIdPac()).isEmpty());
-        pacienteService.deletarPaciente(teste04.getIdPac());
-        assertTrue(pacienteService.buscarPaciente(teste04.getIdPac()).isEmpty());
+    public void criarExcluir(){
+        Endereco end03 = new Endereco("Rua Bento Gonçalves", "123", "Tavares", "Rio Grande do Sul");
+        Paciente teste03= pacienteService.salvarPaciente(new Paciente("Paulo", "Pereira", "12309845", new Date(), end03));
+        assertFalse(pacienteService.buscarPaciente(teste03.getIdPac()).isEmpty());
+        pacienteService.deletarPaciente(teste03.getIdPac());
+        assertTrue(pacienteService.buscarPaciente(teste03.getIdPac()).isEmpty());
     }
 
     @Test
     public void alterarPaciente(){
-        Endereco end05 = new Endereco("Rua Padre Simão", "123", "Tavares", "Rio Grande do Sul");
-        Paciente teste05 = pacienteService.salvarPaciente(new Paciente("Lucas", "Velho", "12309845", new Date(), end05));
-        teste05.setNome("Antonio");
-        Paciente teste06 = pacienteService.alterarPaciente(teste05);
-        assertEquals(teste06.getNome(),"Antonio");
+        Endereco end04 = new Endereco("Rua Padre Simão", "123", "Tavares", "Rio Grande do Sul");
+        Paciente teste04 = pacienteService.salvarPaciente(new Paciente("Lucas", "Velho", "12309845", new Date(), end04));
+        teste04.setNome("Antonio");
+        Paciente teste05 = pacienteService.alterarPaciente(teste04);
+        assertEquals(teste05.getNome(),"Antonio");
     }
 
     @Test
     public void buscarPaciente() {
-        Endereco end03 = new Endereco("Rua Pinheiro Machado", "588", "Tavares", "Rio Grande do Sul");
-        Paciente teste03 = pacienteService.salvarPaciente(new Paciente("Calos", "Silva", "12309845", new Date(), end03));
-        assertEquals(pacienteService.buscarPaciente(teste03.getIdPac()).get().getEndereco().getNumero(),"588");
+        Endereco end06 = new Endereco("Rua Pinheiro Machado", "588", "Tavares", "Rio Grande do Sul");
+        Paciente teste06 = pacienteService.salvarPaciente(new Paciente("Calos", "Silva", "12309845", new Date(), end06));
+        assertEquals(pacienteService.buscarPaciente(teste06.getIdPac()).get().getEndereco().getNumero(),"588");
     }
 
 

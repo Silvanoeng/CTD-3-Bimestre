@@ -1,7 +1,7 @@
 package model;
 
 public class Dentista {
-    private Integer id;
+    private Integer idDen;
     private Integer numeroMatricula;
     private String nome;
     private String sobrenome;
@@ -13,8 +13,8 @@ public class Dentista {
         this.sobrenome = sobrenome;
     }
 
-    public Dentista(Integer id, Integer numeroMatricula, String nome, String sobrenome) {
-        this.id = id;
+    public Dentista(Integer idDen, Integer numeroMatricula, String nome, String sobrenome) {
+        this.idDen = idDen;
         this.numeroMatricula = numeroMatricula;
         this.nome = nome;
         this.sobrenome = sobrenome;
@@ -22,12 +22,12 @@ public class Dentista {
 
     public Dentista() { }
 
-    public Integer getId() {
-        return id;
+    public Integer getIdDen() {
+        return idDen;
     }
 
     public void setIdDen(Integer id) {
-        this.id = id;
+        this.idDen = id;
     }
 
     public Integer getNumeroMatricula() {

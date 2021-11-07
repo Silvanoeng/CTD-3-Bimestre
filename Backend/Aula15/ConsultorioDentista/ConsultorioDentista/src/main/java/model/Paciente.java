@@ -3,15 +3,15 @@ package model;
 import java.util.Date;
 
 public class Paciente {
-    private Integer id;
+    private Integer idPac;
     private String nome;
     private String sobrenome;
     private String rg;
     private Date dataDeCadastro;
     private Endereco endereco;
 
-    public Paciente(Integer id, String nome, String sobrenome, String rg, Date dataDeCadastro, Endereco endereco) {
-        this.id = id;
+    public Paciente(Integer idPac, String nome, String sobrenome, String rg, Date dataDeCadastro, Endereco endereco) {
+        this.idPac = idPac;
         this.nome = nome;
         this.sobrenome = sobrenome;
         this.rg = rg;
@@ -27,12 +27,12 @@ public class Paciente {
         this.endereco = endereco;
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getIdPac() {
+        return idPac;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setIdPac(Integer idPac) {
+        this.idPac = idPac;
     }
 
     public String getNome() {
@@ -77,13 +77,9 @@ public class Paciente {
 
     @Override
     public String toString() {
-        return "Paciente{" +
-                "id=" + id +
-                ", nome='" + nome + '\'' +
-                ", sobrenome='" + sobrenome + '\'' +
-                ", rg='" + rg + '\'' +
-                ", dataDeCadastro=" + dataDeCadastro +
-                ", endereco=" + endereco +
-                '}';
+        return  "Nome: " + nome +
+                ", Sobrenome: " + sobrenome +
+                ", RG: " + rg +
+                ", Data de cadastro: " + dataDeCadastro + endereco;
     }
 }

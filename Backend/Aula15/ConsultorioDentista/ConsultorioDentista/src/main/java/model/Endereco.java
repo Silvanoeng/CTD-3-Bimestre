@@ -1,14 +1,14 @@
 package model;
 
 public class Endereco {
-    private Integer id;
+    private Integer idEnd;
     private String rua;
     private String numero;
     private String cidade;
     private String estado;
 
-    public Endereco(Integer id, String rua, String numero, String cidade, String estado) {
-        this.id = id;
+    public Endereco(Integer idEnd, String rua, String numero, String cidade, String estado) {
+        this.idEnd = idEnd;
         this.rua = rua;
         this.numero = numero;
         this.cidade = cidade;
@@ -22,12 +22,12 @@ public class Endereco {
         this.estado = estado;
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getIdEnd() {
+        return idEnd;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setIdEnd(Integer idEnd) {
+        this.idEnd = idEnd;
     }
 
     public String getRua() {
@@ -64,12 +64,10 @@ public class Endereco {
 
     @Override
     public String toString() {
-        return "Endereco{" +
-                "id=" + id +
-                ", rua='" + rua + '\'' +
-                ", numero='" + numero + '\'' +
-                ", cidade='" + cidade + '\'' +
-                ", estado='" + estado + '\'' +
-                '}';
+        return "Endereco:" +
+                " rua= " + rua +
+                ", numero= " + numero +
+                ", cidade= " + cidade +
+                ", estado= " + estado;
     }
 }

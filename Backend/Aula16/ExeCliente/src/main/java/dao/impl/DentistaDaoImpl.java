@@ -4,16 +4,13 @@ import dao.ConfiguracaoJDBC;
 import dao.IDao;
 import model.Dentista;
 import org.apache.log4j.Logger;
-
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.Period;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
 
 public class DentistaDaoImpl implements IDao<Dentista> {
     private ConfiguracaoJDBC configuracaoJDBC;
@@ -23,105 +20,105 @@ public class DentistaDaoImpl implements IDao<Dentista> {
         this.configuracaoJDBC = new ConfiguracaoJDBC();
     }
 
-
     @Override
-    public Dentista salvar(Dentista dentista) {
-        Connection connection = configuracaoJDBC.conectarBanco();
-        Statement statement = null;
+    public Dentista salvar(Dentista dentistaSalvar) {
+        Connection connectionSalvar = configuracaoJDBC.conectarBanco();
+        Statement statementSalvar = null;
 
-        String query = String.format("INSERT INTO dentista(numeromatricula, nome, sobrenome) VALUES('%s','%s','%s')",
-                dentista.getNumeroMatricula(), dentista.getNome(), dentista.getSobrenome());
+        String querySalvar = String.format("INSERT INTO dentista(numeromatricula, nome, sobrenome) VALUES('%s','%s','%s')",
+                dentistaSalvar.getNumeroMatricula(), dentistaSalvar.getNome(), dentistaSalvar.getSobrenome());
         try {
-            statement = connection.createStatement();
-            statement.executeUpdate(query, Statement.RETURN_GENERATED_KEYS);
-            ResultSet keys = statement.getGeneratedKeys();
-            if (keys.next())
-                dentista.setIdDen(keys.getInt(1));
-            statement.close();
-            connection.close();
-            log.debug("Registrando o dentista: " + dentista.getNome() + ".");
-        } catch (Exception e) {
-            e.printStackTrace();
+            statementSalvar = connectionSalvar.createStatement();
+            statementSalvar.executeUpdate(querySalvar, Statement.RETURN_GENERATED_KEYS);
+            ResultSet keysSalvar = statementSalvar.getGeneratedKeys();
+            if (keysSalvar.next())
+                dentistaSalvar.setIdDen(keysSalvar.getInt(1));
+            statementSalvar.close();
+            connectionSalvar.close();
+            log.debug("Registrando o dentista: " + dentistaSalvar.getNome() + ".");
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
         }
-        return dentista;
+        return dentistaSalvar;
     }
 
     @Override
-    public Dentista alterar(Dentista dentista) {
-        Connection connection = configuracaoJDBC.conectarBanco();
-        Statement statement = null;
-        String query = String.format("UPDATE dentista set numeromatricula = '%s', nome = '%s', sobrenome = '%s' where id = '%s'",
-                dentista.getNumeroMatricula(), dentista.getNome(), dentista.getSobrenome(), dentista.getId());
+    public Dentista alterar(Dentista dentistaAlterar) {
+        Connection connectionAlterar = configuracaoJDBC.conectarBanco();
+        Statement statementAlterar = null;
+
+        String queryAlterar = String.format("UPDATE dentista SET numeromatricula = '%s', nome = '%s', sobrenome = '%s' WHERE id = '%s'",
+                dentistaAlterar.getNumeroMatricula(), dentistaAlterar.getNome(), dentistaAlterar.getSobrenome(), dentistaAlterar.getIdDen());
         try {
-            statement = connection.createStatement();
-            statement.executeUpdate(query);
-            dentista = buscar(dentista.getId()).get();
-            statement.close();
-            connection.close();
-        }catch (Exception e) {
-            e.printStackTrace();
+            statementAlterar = connectionAlterar.createStatement();
+            statementAlterar.executeUpdate(queryAlterar);
+            dentistaAlterar = buscar(dentistaAlterar.getIdDen()).get();
+            statementAlterar.close();
+            connectionAlterar.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
         }
-        log.debug("Dados atualizados: " + dentista);
-        return dentista;
+        log.debug("Dados atualizados: " + dentistaAlterar);
+        return dentistaAlterar;
     }
 
     @Override
-    public void excluir(Integer id) {
-        log.debug("Excluir dentista cadastrado com id: " + id + ".");
-        Connection connection = configuracaoJDBC.conectarBanco();
-        Statement statement = null;
-        Dentista dentista = buscar(id).get();
-        String query = "DELETE FROM dentista WHERE id = " + id;
+    public void excluir(Integer idExcluir) {
+        log.debug("Excluir dentista cadastrado com id: " + idExcluir + ".");
+        Connection connectionExcluir = configuracaoJDBC.conectarBanco();
+        Statement statementExcluir = null;
+
+        String queryExcluir = "DELETE FROM dentista WHERE id = " + idExcluir;
         try {
-            statement = connection.createStatement();
-            statement.executeUpdate(query);
-            statement.close();
-            connection.close();
-        } catch (Exception e) {
-            e.printStackTrace();
+            statementExcluir = connectionExcluir.createStatement();
+            statementExcluir.executeUpdate(queryExcluir);
+            statementExcluir.close();
+            connectionExcluir.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
         }
     }
 
     @Override
-    public Optional<Dentista> buscar(Integer id) {
-        log.debug("Busca dentista cadastrados com id: " + id + ".");
-        Connection connection = configuracaoJDBC.conectarBanco();
-        Statement statement = null;
-        String query = "SELECT * FROM dentista WHERE id = " + id;
-        Dentista dentista = null;
+    public Optional<Dentista> buscar(Integer idBuscar) {
+        log.debug("Busca dentista cadastrado com id: " + idBuscar + ".");
+        Connection connectionBuscar = configuracaoJDBC.conectarBanco();
+        Statement statementBuscar = null;
+
+        String queryBuscar = "SELECT * FROM dentista WHERE id = " + idBuscar;
+        Dentista dentistaBuscar = null;
         try {
-            statement = connection.createStatement();
-            ResultSet busca = statement.executeQuery(query);
-            while (busca.next())
-                dentista = criarNovoDentista(busca);
-            statement.close();
-            connection.close();
-        }catch (Exception e){
-            e.printStackTrace();
+            statementBuscar = connectionBuscar.createStatement();
+            ResultSet resultBuscar = statementBuscar.executeQuery(queryBuscar);
+            while (resultBuscar.next())
+                dentistaBuscar = criarNovoDentista(resultBuscar);
+            statementBuscar.close();
+            connectionBuscar.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
         }
-        return dentista != null ? Optional.of(dentista): Optional.empty();
+        return dentistaBuscar != null ? Optional.of(dentistaBuscar): Optional.empty();
     }
 
     @Override
     public List<Dentista> listarTodos() {
-        log.debug("Listando todos os dentista cadastrados.");
-        Connection connection = configuracaoJDBC.conectarBanco();
-        Statement statement = null;
+        log.debug("Listando todos os dentistas cadastrados.");
+        Connection connectionTodos = configuracaoJDBC.conectarBanco();
+        Statement statementTodos = null;
 
-        String query = "SELECT * FROM dentista";
-        List<Dentista> dentistas = new ArrayList<>();
+        String queryTodos = "SELECT * FROM dentista";
+        List<Dentista> dentistasTodos = new ArrayList<>();
         try {
-            statement = connection.createStatement();
-            ResultSet buscar = statement.executeQuery(query);
-            while (buscar.next()) {
-                dentistas.add(criarNovoDentista(buscar));
-            }
-            statement.close();
-            connection.close();
+            statementTodos = connectionTodos.createStatement();
+            ResultSet resultTodos = statementTodos.executeQuery(queryTodos);
+            while (resultTodos.next())
+                dentistasTodos.add(criarNovoDentista(resultTodos));
+            statementTodos.close();
+            connectionTodos.close();
         }catch (SQLException throwables){
             throwables.printStackTrace();
         }
-        return dentistas;
+        return dentistasTodos;
     }
 
     private Dentista criarNovoDentista(ResultSet buscar) throws SQLException {

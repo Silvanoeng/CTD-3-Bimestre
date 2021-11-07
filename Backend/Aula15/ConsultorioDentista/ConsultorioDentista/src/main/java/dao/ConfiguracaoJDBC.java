@@ -10,22 +10,22 @@ public class ConfiguracaoJDBC {
     private String usuario;
     private String senha;
 
-    private static final String SQL_CREATE_TABLE_PACIENTES = "create table IF NOT EXISTS pacientes" +
+    private static final String SQL_CREATE_TABLE_PAC = "CREATE TABLE IF NOT EXISTS pacientes" +
             "(" +
             "id int auto_increment primary key," +
-            "nome varchar(255)," +
-            "sobrenome varchar(255)," +
-            "rg varchar(255)," +
+            "nome varchar(40)," +
+            "sobrenome varchar(100)," +
+            "rg varchar(20)," +
             "dataDeCadastro TIMESTAMP WITHOUT TIME ZONE," +
-            "enderecoId int);";
+            "idEnd int);";
 
-    private static final String SQL_CREATE_TABLE_ENDERECOS = "create table IF NOT EXISTS enderecos" +
+    private static final String SQL_CREATE_TABLE_END = "CREATE TABLE IF NOT EXISTS enderecos" +
             "(" +
             "id int auto_increment primary key," +
-            "rua varchar(255)," +
-            "numero varchar(255)," +
-            "cidade varchar(255)," +
-            "estado varchar (255));";
+            "rua varchar(100)," +
+            "numero varchar(20)," +
+            "cidade varchar(50)," +
+            "estado varchar (50));";
 
     public ConfiguracaoJDBC(String jdbcDriver, String url, String usuario, String senha) {
         this.jdbcDriver = jdbcDriver;
@@ -47,8 +47,8 @@ public class ConfiguracaoJDBC {
         try {
             Connection connection = conectarBase();
             Statement statement = connection.createStatement();
-            statement.execute(SQL_CREATE_TABLE_PACIENTES);
-            statement.execute(SQL_CREATE_TABLE_ENDERECOS);
+            statement.execute(SQL_CREATE_TABLE_PAC);
+            statement.execute(SQL_CREATE_TABLE_END);
             statement.close();
             connection.close();
         } catch (Exception e) {

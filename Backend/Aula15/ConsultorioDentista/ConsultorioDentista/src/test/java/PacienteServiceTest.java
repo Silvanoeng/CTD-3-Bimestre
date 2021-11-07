@@ -3,7 +3,6 @@ import model.Paciente;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import service.PacienteService;
-
 import java.util.Date;
 import java.util.List;
 
@@ -14,34 +13,44 @@ public class PacienteServiceTest {
 
     @BeforeAll
     public static void carregarTabela(){
-        Endereco endereco = new Endereco("Av Augusto de Lima", "444", "Belo Horizonte", "Minas Gerais");
-        Paciente p = pacienteService.salvar(new Paciente("Glauber", "Lima", "12345678", new Date(), endereco));
-        Endereco endereco1 = new Endereco("Av Paulista", "333", "São Paulo", "São Paulo");
-        Paciente p1 = pacienteService.salvar(new Paciente("Marcela", "Souza", "98765432", new Date(), endereco1));
+        Endereco end01 = new Endereco("Rua Independência", "888", "Mostardas", "Rio Grande do Sul");
+        Paciente test01 = pacienteService.salvarPaciente(new Paciente("Silvano", "Araujo", "123654789", new Date(), end01));
+        Endereco end02 = new Endereco("Rua 11 de abril", "366", "Mostardas", "Rio Grande do Sul");
+        Paciente teste02 = pacienteService.salvarPaciente(new Paciente("Marcos", "Paulo", "147852369", new Date(), end02));
     }
 
     @Test
-    public void salvarPacienteEBuscar() {
-        Endereco endereco = new Endereco("Av Vieira Souto", "123", "Rio de Janeiro", "Rio de Janeiro");
-        Paciente p = pacienteService.salvar(new Paciente("Thomas", "Pereira", "12309845", new Date(), endereco));
-
-        assertNotNull(pacienteService.buscar(p.getId()));
-    }
-
-    @Test
-    public void excluirPacienteTest(){
-        Endereco endereco = new Endereco("Av Vieira Souto", "123", "Rio de Janeiro", "Rio de Janeiro");
-        Paciente p = pacienteService.salvar(new Paciente("Thomas", "Pereira", "12309845", new Date(), endereco));
-
-        assertFalse(pacienteService.buscar(p.getId()).isEmpty());
-        pacienteService.excluir(p.getId());
-        assertTrue(pacienteService.buscar(p.getId()).isEmpty());
-    }
-
-    @Test
-    public void buscarTodos() {
-        List<Paciente> pacientes = pacienteService.buscarTodos();
-
+    public void listarTodos(){
+        List<Paciente> pacientes = pacienteService.buscarTodosPacientes();
         assertFalse(pacientes.isEmpty());
     }
+
+    @Test
+    public void cirarExcluir(){
+        Endereco end04 = new Endereco("Rua Bento Gonçalves", "123", "Tavares", "Rio Grande do Sul");
+        Paciente teste04 = pacienteService.salvarPaciente(new Paciente("Paulo", "Pereira", "12309845", new Date(), end04));
+        assertFalse(pacienteService.buscarPaciente(teste04.getIdPac()).isEmpty());
+        pacienteService.deletarPaciente(teste04.getIdPac());
+        assertTrue(pacienteService.buscarPaciente(teste04.getIdPac()).isEmpty());
+    }
+
+    @Test
+    public void alterarPaciente(){
+        Endereco end05 = new Endereco("Rua Padre Simão", "123", "Tavares", "Rio Grande do Sul");
+        Paciente teste05 = pacienteService.salvarPaciente(new Paciente("Lucas", "Velho", "12309845", new Date(), end05));
+        teste05.setNome("Antonio");
+        Paciente teste06 = pacienteService.alterarPaciente(teste05);
+        assertEquals(teste06.getNome(),"Antonio");
+    }
+
+    @Test
+    public void buscarPaciente() {
+        Endereco end03 = new Endereco("Rua Pinheiro Machado", "588", "Tavares", "Rio Grande do Sul");
+        Paciente teste03 = pacienteService.salvarPaciente(new Paciente("Calos", "Silva", "12309845", new Date(), end03));
+        assertEquals(pacienteService.buscarPaciente(teste03.getIdPac()).get().getEndereco().getNumero(),"588");
+    }
+
+
+
+
 }

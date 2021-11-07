@@ -3,7 +3,6 @@ package service;
 import dao.IDao;
 import dao.impl.PacienteDaoImpl;
 import model.Paciente;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -14,19 +13,21 @@ public class PacienteService {
         this.pacienteIDao = new PacienteDaoImpl();
     }
 
-    public Paciente salvar(Paciente p) {
-        return pacienteIDao.salvar(p);
+    public Paciente salvarPaciente(Paciente paciente) {
+        return pacienteIDao.salvar(paciente);
     }
 
-    public Optional<Paciente> buscar(Integer id){
-        return pacienteIDao.buscar(id);
-    }
+    public Paciente alterarPaciente(Paciente paciente) { return pacienteIDao.alterar(paciente); }
 
-    public void excluir(Integer id) {
+    public void deletarPaciente(Integer id) {
         pacienteIDao.excluir(id);
     }
 
-    public List<Paciente> buscarTodos() {
+    public Optional<Paciente> buscarPaciente(Integer id){
+        return pacienteIDao.buscar(id);
+    }
+
+    public List<Paciente> buscarTodosPacientes() {
         return pacienteIDao.buscarTodos();
     }
 }

@@ -10,5 +10,4 @@ public interface IDao <T> {
     public Optional<T> buscar(Integer id);
     public List<T> listarTodos();
 
-
 }

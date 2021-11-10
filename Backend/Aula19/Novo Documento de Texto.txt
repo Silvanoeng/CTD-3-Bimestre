@@ -1,0 +1,5 @@
+private Endereco endereco = new Endereco("Rua Clovis", "14", "São Paulo", "SP");
+    private Endereco endereco2 = new Endereco("Rua Mendes", "140", "Belo Horizonte", "MG");
+
+    private Paciente paciente = new Paciente(1, "John", "Dutra", "johndutra@email.com", "12345678909", LocalDate.now(), endereco);
+    private Paciente paciente2 = new Paciente(1, "Neide", "Blanco", "neideblanco@email.com", "98765432112", LocalDate.now(), endereco2);

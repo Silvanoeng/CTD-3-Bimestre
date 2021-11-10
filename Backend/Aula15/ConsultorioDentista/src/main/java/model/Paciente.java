@@ -2,7 +2,7 @@ package model;
 
 import java.util.Date;
 
-public class Paciente {
+public class Paciente extends {
     private Integer idPac;
     private String nome;
     private String sobrenome;

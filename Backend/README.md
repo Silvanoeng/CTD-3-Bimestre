@@ -1,12 +1,15 @@
 # Backend Java ☕
+
 ## Conteúdo do Curso
+
 ### Design Patterns
   - Facade pattern(Fachada)
   - Template Method pattern
   - Chain of Responsibility pattern
   - Proxy pattern
   - Flyweight pattern
-## Testes Unitários, Logging e Acesso a Dados
+
+### Testes Unitários, Logging e Acesso a Dados
   - Testes unitários JUnit
   - Logging (trace e Debug)
   - Acesso a Banco de Dados
@@ -16,6 +19,7 @@
   - Avaliação I
   - Maven
   - Serialização de Objetos e I/O de Arquivos
+
 ### Framework para o desenvolvimento ágil de aplicações
   - Introdução ao Spring Boot
   - Padrão MVC

@@ -33,12 +33,7 @@ public class DentistaController {
     public String searchAll(Model buscaTodos) {
         List<Dentista> busca = dentistaService.searchAll();
         buscaTodos.addAttribute("parametro", "Dent");
-        buscaTodos.addAttribute("nome1", busca.get(0).getNome());
-        buscaTodos.addAttribute("sobrenome1", busca.get(0).getSobrenome());
-        buscaTodos.addAttribute("numMat1", busca.get(0).getNumMatricula());
-        buscaTodos.addAttribute("nome2", busca.get(1).getNome());
-        buscaTodos.addAttribute("sobrenome2", busca.get(1).getSobrenome());
-        buscaTodos.addAttribute("numMat2", busca.get(1).getNumMatricula());
+        buscaTodos.addAttribute("listaTodos", busca);
         return "lista";
     }
 }

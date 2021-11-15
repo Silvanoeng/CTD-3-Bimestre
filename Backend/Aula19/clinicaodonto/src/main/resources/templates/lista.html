@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Java</title>
+</head>
+<body>
+<div th:switch="${parametro}">
+    <td>Lista de todos, </td>
+    <td th:case="Pac"> pacientes</td>
+    <td th:case="Dent"> dentistas:</td>
+
+    <div>
+        <div th:switch="${parametro}">
+            <td>Nome: </td>
+            <td th:text="${nome1}"></td>
+            <td th:text="${sobrenome1}"></td>
+            <td> | </td>
+            <td th:case="Pac" th:text="'Email: ' + ${email1} + '.'"></td>
+            <td th:case="Dent" th:text="'Matrícula: ' + ${numMat1} + '.'"></td>
+        </div>
+
+        <div th:switch="${parametro}">
+            <td>Nome: </td>
+            <td th:text="${nome2}"></td>
+            <td th:text="${sobrenome2}"></td>
+            <td> | </td>
+            <td th:case="Pac" th:text="'Email: ' + ${email2} + '.'"></td>
+            <td th:case="Dent" th:text="'Matrícula: ' + ${numMat2} + '.'"></td>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,5 +1,6 @@
 package com.example.clinicaodonto.controller;
 
+
 import com.example.clinicaodonto.model.Paciente;
 import com.example.clinicaodonto.service.ClinicaOdonto;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,18 +28,15 @@ public class PacienteController {
         return "index";
     }
 
+
     @GetMapping("/searchAllPac")
     public String searchAll(Model buscaTodos) {
         List<Paciente> busca = pacienteService.searchAll();
         buscaTodos.addAttribute("parametro", "Pac");
-        buscaTodos.addAttribute("nome1", busca.get(0).getNome());
-        buscaTodos.addAttribute("sobrenome1", busca.get(0).getSobrenome());
-        buscaTodos.addAttribute("email1", busca.get(0).getEmail());
-        buscaTodos.addAttribute("nome2", busca.get(1).getNome());
-        buscaTodos.addAttribute("sobrenome2", busca.get(1).getSobrenome());
-        buscaTodos.addAttribute("email2", busca.get(1).getEmail());
+        buscaTodos.addAttribute("listaTodos", busca);
         return "lista";
     }
+
 
     @GetMapping("/emailPac/{email}")
     public String searchEmail(@PathVariable String email, Model resultado) {

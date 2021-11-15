@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Java</title>
+</head>
+<body>
+<div th:switch="${parametro}">
+    <td>Olá, </td>
+    <td th:case="Pac"> paciente</td>
+    <td th:case="Dent"> dentista</td>
+    <td th:text="${nome}"></td>
+    <td th:text="${sobrenome}"></td>
+    <div th:switch="${parametro}">
+        <td th:case="Dent">Matrícula:</td>
+        <td th:case="Dent" ? text="${NumMat}"></td>
+        <td th:case="Pac">Email:</td>
+        <td th:case="Pac":text="${email}"></td>
+    </div>
+</div>
+
+</body>
+</html>

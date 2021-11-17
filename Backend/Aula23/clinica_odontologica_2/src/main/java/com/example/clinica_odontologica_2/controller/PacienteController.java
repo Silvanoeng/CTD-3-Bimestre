@@ -1,7 +1,7 @@
-package com.example.clinica_odonto.controller;
+package com.example.clinica_odontologica_2.controller;
 
-import com.example.clinica_odonto.model.Paciente;
-import com.example.clinica_odonto.service.impl.PacienteServiceImpl;
+import com.example.clinica_odontologica_2.model.Paciente;
+import com.example.clinica_odontologica_2.service.impl.PacienteServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -25,6 +25,6 @@ public class PacienteController {
         if(paciente != null)
             return ResponseEntity.ok(pacienteService.buscarPorId(id));
 
-        return ResponseEntity.badRequest().body("Paciente.java não encontrado");
+        return ResponseEntity.badRequest().body("Paciente não encontrado");
     }
 }

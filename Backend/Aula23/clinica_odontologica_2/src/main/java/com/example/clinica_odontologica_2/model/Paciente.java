@@ -1,6 +1,6 @@
-package com.example.clinica_odonto.model;
+package com.example.clinica_odontologica_2.model;
 
-import com.example.clinica_odonto.dto.PacienteDTO;
+import com.example.clinica_odontologica_2.dto.PacienteDTO;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,8 +10,6 @@ public class Paciente {
     private Integer id;
     private String nome;
     private String sobrenome;
-    private String email;
-    private String cpf;
     private Endereco endereco;
 
     public Paciente(){}
@@ -20,8 +18,6 @@ public class Paciente {
         this.id = pacienteDTO.getId();
         this.nome = pacienteDTO.getNome();
         this.sobrenome = pacienteDTO.getSobrenome();
-        this.email = pacienteDTO.getEmail();
-        this.cpf = pacienteDTO.getCpf();
         this.endereco = endereco;
     }
 }

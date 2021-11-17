@@ -1,18 +1,17 @@
-package com.example.clinica_odonto.service.impl;
+package com.example.clinica_odontologica_2.service.impl;
 
-import com.example.clinica_odonto.model.Paciente;
-import com.example.clinica_odonto.repository.impl.PacienteRepositoryImpl;
-import com.example.clinica_odonto.service.OdontoService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.example.clinica_odontologica_2.model.Paciente;
+import com.example.clinica_odontologica_2.repository.impl.PacienteRepositoryImpl;
+import com.example.clinica_odontologica_2.service.OdontoService;
 import org.springframework.stereotype.Service;
 
 @Service
 public class PacienteServiceImpl implements OdontoService<Paciente> {
-
-    @Autowired
     private PacienteRepositoryImpl pacienteRepository;
 
-    public PacienteServiceImpl(){this.pacienteRepository = new PacienteRepositoryImpl();}
+    public PacienteServiceImpl() {
+        this.pacienteRepository = new PacienteRepositoryImpl();
+    }
 
 
     @Override

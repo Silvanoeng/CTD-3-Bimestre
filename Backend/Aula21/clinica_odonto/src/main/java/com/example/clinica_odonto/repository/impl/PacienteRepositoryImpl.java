@@ -3,22 +3,22 @@ package com.example.clinica_odonto.repository.impl;
 import com.example.clinica_odonto.dto.PacienteDTO;
 import com.example.clinica_odonto.model.Paciente;
 import com.example.clinica_odonto.repository.IRepositoryDTO;
-
 import java.util.HashMap;
 import java.util.Map;
 
-public class PacienteRepositoryIMPL implements IRepositoryDTO<Paciente> {
+public class PacienteRepositoryImpl implements IRepositoryDTO<Paciente> {
     private static Map<Integer, PacienteDTO> pacienteDTOMap = new HashMap<>();
+    private EnderecoRepositoryImpl enderecoRepository;
     private static Integer idGlobal=1;
 
-    private EnderecoRepositoryImpl enderecoRepository;
 
-    public PacienteRepositoryIMPL(EnderecoRepositoryImpl enderecoRepository){
-        this.enderecoRepository = enderecoRepository;
+    public PacienteRepositoryImpl(){
+        this.enderecoRepository = new EnderecoRepositoryImpl();
     }
 
     @Override
     public Paciente salvar(Paciente paciente) {
+
         paciente.setEndereco(enderecoRepository.salvar(paciente.getEndereco()));
         paciente.setId(idGlobal);
         PacienteDTO pacienteDTO = new PacienteDTO(paciente);
@@ -29,7 +29,10 @@ public class PacienteRepositoryIMPL implements IRepositoryDTO<Paciente> {
 
     @Override
     public Paciente buscarPorId(Integer id) {
-        Paciente paciente = new Paciente(pacienteDTOMap.get(id));
-        return paciente;
+        PacienteDTO pacienteDTO = pacienteDTOMap.get(id);
+        if(pacienteDTO != null)
+            return new Paciente(pacienteDTO, enderecoRepository.buscarPorId(pacienteDTO.getIdEndereco()));
+
+        return null;
     }
 }

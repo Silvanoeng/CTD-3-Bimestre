@@ -1,6 +1,6 @@
-package com.example.clinica_odonto.model;
+package com.example.clinica_odontologica_2.model;
 
-import com.example.clinica_odonto.dto.EnderecoDTO;
+import com.example.clinica_odontologica_2.dto.EnderecoDTO;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,17 +10,12 @@ public class Endereco {
     private Integer id;
     private String rua;
     private String numero;
-    private String cidade;
-    private String estado;
 
-    public Endereco() {
-    }
+    public Endereco(){}
 
     public Endereco(EnderecoDTO enderecoDTO) {
         this.id = enderecoDTO.getId();
         this.rua = enderecoDTO.getRua();
         this.numero = enderecoDTO.getNumero();
-        this.cidade = enderecoDTO.getCidade();
-        this.estado = enderecoDTO.getEstado();
     }
 }

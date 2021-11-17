@@ -8,8 +8,6 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class PacienteServiceImpl implements OdontoService<Paciente> {
-
-    @Autowired
     private PacienteRepositoryImpl pacienteRepository;
 
     public PacienteServiceImpl(){this.pacienteRepository = new PacienteRepositoryImpl();}

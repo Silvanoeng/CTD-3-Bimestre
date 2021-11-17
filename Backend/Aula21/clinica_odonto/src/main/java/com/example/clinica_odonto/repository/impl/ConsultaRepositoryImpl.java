@@ -1,12 +1,10 @@
 package com.example.clinica_odonto.repository.impl;
 
 import com.example.clinica_odonto.dto.ConsultaDTO;
-import com.example.clinica_odonto.dto.PacienteDTO;
 import com.example.clinica_odonto.model.Consulta;
 import com.example.clinica_odonto.model.Dentista;
 import com.example.clinica_odonto.model.Paciente;
 import com.example.clinica_odonto.repository.IRepositoryDTO;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,13 +12,27 @@ public class ConsultaRepositoryImpl implements IRepositoryDTO<Consulta> {
     private static Map<Integer, ConsultaDTO> consultaDTOMap = new HashMap<>();
     private DentistaRepositoryImpl dentistaRepository;
     private PacienteRepositoryImpl pacienteRepository;
-    private EnderecoRepositoryImpl enderecoRepository;
     private static Integer idGlobal=1;
+
+    public ConsultaRepositoryImpl(){
+        this.dentistaRepository = new DentistaRepositoryImpl();
+        this.pacienteRepository = new PacienteRepositoryImpl();
+    }
 
 
     @Override
     public Consulta salvar(Consulta consulta) {
+        Paciente paciente = pacienteRepository.buscarPorId(consulta.getPaciente().getId());
+        if(paciente == null)
+            return null;
+
+        Dentista dentista = dentistaRepository.buscarPorId(consulta.getDentista().getId());
+        if(dentista == null)
+            return null;
+
         consulta.setId(idGlobal);
+        consulta.setPaciente(paciente);
+        consulta.setDentista(dentista);
         ConsultaDTO consultaDTO = new ConsultaDTO(consulta);
         consultaDTOMap.put(idGlobal, consultaDTO);
         idGlobal++;
@@ -31,8 +43,8 @@ public class ConsultaRepositoryImpl implements IRepositoryDTO<Consulta> {
     public Consulta buscarPorId(Integer id) {
         ConsultaDTO consultaDTO = consultaDTOMap.get(id);
         if(consultaDTO != null)
-            return new Consulta(consultaDTO, new Dentista(dentistaRepository.buscarPorId(consultaDTO.getIdDen())),
-                    new Paciente(pacienteRepository.buscarPorId(consultaDTO.getIdPac()), enderecoRepository.buscarPorId(pacienteRepository.buscarPorId(consultaDTO.getIdPac()))));
+            return new Consulta(consultaDTO, dentistaRepository.buscarPorId(consultaDTO.getIdDen()),
+                    pacienteRepository.buscarPorId(consultaDTO.getIdPac()));
         return null;
     }
 }

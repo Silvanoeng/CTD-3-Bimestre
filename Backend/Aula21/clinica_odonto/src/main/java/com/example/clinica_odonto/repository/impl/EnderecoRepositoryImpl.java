@@ -3,7 +3,6 @@ package com.example.clinica_odonto.repository.impl;
 import com.example.clinica_odonto.dto.EnderecoDTO;
 import com.example.clinica_odonto.model.Endereco;
 import com.example.clinica_odonto.repository.IRepositoryDTO;
-
 import java.util.HashMap;
 import java.util.Map;
 

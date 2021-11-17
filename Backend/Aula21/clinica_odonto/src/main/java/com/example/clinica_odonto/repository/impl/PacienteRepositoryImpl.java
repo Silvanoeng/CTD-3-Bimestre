@@ -11,7 +11,6 @@ public class PacienteRepositoryImpl implements IRepositoryDTO<Paciente> {
     private EnderecoRepositoryImpl enderecoRepository;
     private static Integer idGlobal=1;
 
-
     public PacienteRepositoryImpl(){
         this.enderecoRepository = new EnderecoRepositoryImpl();
     }

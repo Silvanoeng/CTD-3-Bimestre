@@ -59,14 +59,13 @@ export default class CardsProjetos extends Component {
         }
     ]
     render() {
-
         return (
             <div className='grupoCards'>
-                <CardGroup className='pt-5 pb-5'>
+                <CardGroup className='pt-4 pb-4 containerCard' id='projetos'>
                     {
                         this.lista.map((parametro) => {
                             return (
-                                <Card border="ligh" style={{ width: '18rem' }} className='ms-5 me-5'    key={parametro.id} id='projetos'>
+                                <Card border="light" className='uniCard m-5' style={{ width: "18rem" }}    key={parametro.id} >
                                     <Card.Img variant="top" src={parametro.img} alt= {parametro.desFoto} thumbnail/>
                                     <Card.Body>
                                         <Card.Title className='text-center'>{parametro.titulo}</Card.Title>
@@ -75,22 +74,19 @@ export default class CardsProjetos extends Component {
                                             <p>{parametro.atividade}</p>
                                             <p>{parametro.data}</p>
                                         </Card.Text>
-                                    
                                     </Card.Body>
-                                        <Row>
-                                            <Col>
-                                                <Stack gap={2} variant="bottom" className='col-md-5 mx-auto  pb-3'>
-                                                    <Button href={parametro.urlGitHub} variant="secondary" size="lg">GitHub</Button> {' '}
-                                                    <Button href={parametro.urlGitPage}  variant="outline-secondary" size="lg">Site</Button>
-                                                </Stack>
-                                            </Col>
-                                        </Row>
+                                        <Container>
+                                            <Stack gap={2} variant="bottom" className='col-md-5 mx-auto  pb-3'>
+                                                <Button href={parametro.urlGitHub} variant="secondary" >GitHub</Button> {' '}
+                                                <Button href={parametro.urlGitPage}  variant="outline-secondary" >Site</Button>
+                                            </Stack>
+                                        </Container>
                                 </Card>
                             )
                         })
                     }
-                </CardGroup>
-            </div>    
+                </CardGroup> 
+            </div>  
         )
     }
 }

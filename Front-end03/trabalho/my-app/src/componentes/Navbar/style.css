@@ -5,14 +5,15 @@
 }
 
 .navLogo {
-    font-size: 2rem !important;
+    font-size: 2rem;
     margin-left: 24px !important;
     font-weight: bold;
     text-decoration: none;
 }
 
 .navbar-nav{
-    font-size: 1.5rem;
+    font-size: 1.5rem !important;
+    font-weight: bold;
 }
 .navcor{
     color: #fff !important;
@@ -32,9 +33,7 @@
     color: rgb(148, 134, 212) !important;
 }
 
-/* .navbar-toggler{
-    background-color: rgb(148, 134, 212) !important;
-} */
+
 .navbar-toggler {
     background-color: rgb(148, 134, 212) !important;
 }
@@ -43,5 +42,20 @@
 @media (min-width: 992px){
     .navbarCor{
         background-color: transparent !important;
+    }
+    .navbar-nav{
+        font-size: 1rem ;
+    }
+    .navLogo {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 592px){
+    .navbar-nav{
+        font-size: 1rem;
+    }
+    .navLogo {
+        font-size: 1.5rem;
     }
 }

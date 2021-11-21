@@ -1,6 +1,29 @@
+h3{
+    font-size: 2rem !important;
+}
+p{
+    font-size: 1.2rem !important;
+}
+
 
 @media (max-width: 992px){
     .carousel{
-        margin-top: 70px;
+        margin-top: 74px;
+    }
+    h3{
+        font-size: 1.5rem !important;
+    }
+    p{
+        font-size: 1rem !important;
+    }
+}
+@media (max-width: 592px){
+    .carousel{
+        margin-top: 62px;
+    }
+}
+@media (max-width: 321px){
+    .carousel{
+        margin-top: 102px;
     }
 }

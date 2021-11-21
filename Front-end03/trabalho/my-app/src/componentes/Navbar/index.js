@@ -19,7 +19,7 @@ const Nave = () => {
     window.addEventListener('scroll', navBackground);
 
     return (
-        <Navbar className= {navbar ? "navbar-shrink-light navbar navbar-light fixed-top navbar-expand-lg navbar-dark ps-3" : "navbarCor navbar navbar-light fixed-top navbar-expand-lg navbar-dark ps-3"} bg="light" expand="lg">
+        <Navbar className= {navbar ? "navbar-shrink-light navbar navbar-light fixed-top navbar-expand-lg navbar-dark ps-3" : "navbarCor navbar navbar-light fixed-top navbar-expand-lg navbar-dark ps-3"} bg="light" expand="lg" >
             <Container>
                 <Navbar.Brand className={navbar ? 'navLogo navcor': 'navLogo navcor2'} href="#inicio">Silvano A. P.</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />

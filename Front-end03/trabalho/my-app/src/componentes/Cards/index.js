@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import { Card, Button, CardGroup } from 'react-bootstrap';
+import { Card, Button, CardGroup, Stack, Row, Col, Container } from 'react-bootstrap';
 import './style.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import img01 from "../Img/site01.png"
-import img02 from "../Img/site02.png"
-import img03 from "../Img/site03.png"
-import img04 from "../Img/site04.png"
+import img01 from "../../Img/site01.png"
+import img02 from "../../Img/site02.png"
+import img03 from "../../Img/site03.png"
+import img04 from "../../Img/site04.png"
 
 
 
@@ -61,34 +61,36 @@ export default class CardsProjetos extends Component {
     render() {
 
         return (
-        
-            <CardGroup>
-                {
-                    this.lista.map((parametro) => {
-                        return (
-                            <Card border="light" style= {{width: '18rem'}}  key={parametro.id}>
-                                <Card.Img variant="top" src={parametro.img} alt= {parametro.desFoto} thumbnail/>
-                                <Card.Body>
-                                    <Card.Title>{parametro.titulo}</Card.Title>
-                                    <Card.Text>
-                                        <p>{parametro.descricao}</p>
-                                        <p>{parametro.atividade}</p>
-                                        <p>{parametro.data}</p>
-                                    </Card.Text>
-                                    <div className="mb-2">
-                                        
-                                    </div>
-                                </Card.Body>
-                                <small >
-                                    <Button href={parametro.urlGitHub} variant="primary" size="lg">GitHub</Button> {' '}
-                                    <Button href={parametro.urlGitPage}  variant="secondary" size="lg">Site</Button>
-                                </small>
-                            </Card>
-                        )
-                    })
-                }
-
-            </CardGroup>
+            <div className='grupoCards'>
+                <CardGroup className='pt-5 pb-5'>
+                    {
+                        this.lista.map((parametro) => {
+                            return (
+                                <Card border="ligh" style={{ width: '18rem' }} className='ms-5 me-5'    key={parametro.id} id='projetos'>
+                                    <Card.Img variant="top" src={parametro.img} alt= {parametro.desFoto} thumbnail/>
+                                    <Card.Body>
+                                        <Card.Title className='text-center'>{parametro.titulo}</Card.Title>
+                                        <Card.Text >
+                                            <p>{parametro.descricao}</p>
+                                            <p>{parametro.atividade}</p>
+                                            <p>{parametro.data}</p>
+                                        </Card.Text>
+                                    
+                                    </Card.Body>
+                                        <Row>
+                                            <Col>
+                                                <Stack gap={2} variant="bottom" className='col-md-5 mx-auto  pb-3'>
+                                                    <Button href={parametro.urlGitHub} variant="secondary" size="lg">GitHub</Button> {' '}
+                                                    <Button href={parametro.urlGitPage}  variant="outline-secondary" size="lg">Site</Button>
+                                                </Stack>
+                                            </Col>
+                                        </Row>
+                                </Card>
+                            )
+                        })
+                    }
+                </CardGroup>
+            </div>    
         )
     }
 }

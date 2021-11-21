@@ -1,0 +1,47 @@
+
+.navbar-shrink-light {
+    background-color: rgba(17, 161, 149, 0.85) !important;
+    
+}
+
+.navLogo {
+    font-size: 2rem !important;
+    margin-left: 24px !important;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.navbar-nav{
+    font-size: 1.5rem;
+}
+.navcor{
+    color: #fff !important;
+}
+.navbarCor{
+    background-color: rgba(17, 161, 149, 0.85) !important;
+}
+
+.navcor:hover{
+    color: rgb(148, 134, 212) !important;
+}
+.navcor2{
+    color: rgb(45, 13, 184) !important;
+}
+
+.navcor2:hover{
+    color: rgb(148, 134, 212) !important;
+}
+
+/* .navbar-toggler{
+    background-color: rgb(148, 134, 212) !important;
+} */
+.navbar-toggler {
+    background-color: rgb(148, 134, 212) !important;
+}
+
+
+@media (min-width: 992px){
+    .navbarCor{
+        background-color: transparent !important;
+    }
+}

@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import './style.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Carousel } from 'react-bootstrap';
-import slide01 from "../Img/imagem02.jpg"
-import slide02 from "../Img/imagem03.jpg"
-import slide03 from "../Img/imagem04.jpg"
+import slide03 from "../../Img/imagem03.jpg"
+import slide02 from "../../Img/imagem02.jpg"
+import slide01 from "../../Img/imagem04.jpg"
 
 
 
@@ -12,22 +12,22 @@ export default class BannerCarousel extends Component {
     listaDeDados = [
         {
             id: 1,
-            titulo: 'estagio 1',
-            texto: 'Inicio da carreira como desenvolvedor foi em 24 de maio de 2021',
+            titulo: 'Minhas origens...',
+            texto: 'Sou natural de Mostardas/RS, filho do seu Helio (mestre de obras) e dona Percilia (costureira), irmão da Vania (funcionária páblica).',
             slide: slide01,
             desFoto: 'Paisagem de uma lagoa'
         },
         {
             id: 2,
-            titulo: 'estagio 2',
-            texto: 'Inicio da carreira como desenvolvedor foi em 25 de maio de 2021',
+            titulo: 'Novos rumos...',
+            texto: 'Em 2010 fui para Rio Grande/RS, onde cursei Engenharia Civil na Universidade Federal do Rio Grande, me formando no ano de 2015.',
             slide: slide02,
             desFoto: 'Paisagem de uma lagoa'
         },
         {
             id: 3,
-            titulo: 'estagio 3',
-            texto: 'Inicio da carreira como desenvolvedor foi em 26 de maio de 2021',
+            titulo: 'O regresso...',
+            texto: 'Em 2016 voltei para Mostardas, onde atuei como Engenheiro Civil até maio de 2021, deste periodo 3 anos foram como Engenheiro da Prefeitura.',
             slide: slide03,
             desFoto: 'Paisagem de uma lagoa'
         }
@@ -35,13 +35,13 @@ export default class BannerCarousel extends Component {
     render() {
         
         return (
-            <Carousel>
+            <Carousel className='carousel'>
                 {
                     this.listaDeDados.map((parametro) => {
                         return (
-                            <Carousel.Item key={parametro.id}>
-                                <img src={parametro.slide} alt={parametro.desFoto} />
-                                <Carousel.Caption>
+                            <Carousel.Item key={parametro.id} id='inicio'>
+                                <img className='img-fluid d-block' src={parametro.slide} alt={parametro.desFoto} />
+                                <Carousel.Caption className='d-none d-md-block'>
                                     <h4>{parametro.titulo}</h4>
                                     <p>{parametro.texto}</p>
                                 </Carousel.Caption>

@@ -1,13 +1,23 @@
-import './style.css';
+// import './style.css';
+// import React from 'react';
+// import { Container, Wrapper, Row, Column, Link, Title  } from 'react-bootstrap';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 
-const Footer = ({children}) => {
+// const Footer = () => {
 
 
-    return(
-        <footer>
-            <p>{children}</p>
-        </footer>
-    );
-}
+//     return(
+//         <div className='main-footer'>
+//             <Container>
+//                 <Row>
+//                     <Column>
 
-export default Footer;
+//                     </Column>
+//                 </Row>
+
+//             </Container>
+//         </div>
+//     );
+// }
+
+// export default Footer;

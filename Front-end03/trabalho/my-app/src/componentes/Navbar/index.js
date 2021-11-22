@@ -18,7 +18,7 @@ const Nave = () => {
     window.addEventListener('scroll', navBackground);
 
     return (
-        <Navbar className= {navbar ? "navbar-shrink-light fixed-top navbar-expand-lg navbar-light bg-light ps-3" : " navbar fixed-top navbar-expand-lg navbar-light  ps-3"}  expand="lg" >
+        <Navbar className= {navbar ? "navbarCor navbar-shrink-light fixed-top navbar-expand-lg navbar-light bg-light ps-3" : "navbarCor navbar fixed-top navbar-expand-lg navbar-light  ps-3"}  expand="lg" >
             <Container>
                 <Navbar.Brand className={navbar ? 'navLogo navcor': 'navLogo navcor2'} href="#inicio">Silvano A. P.</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />

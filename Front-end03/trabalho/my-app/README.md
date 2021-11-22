@@ -3,7 +3,7 @@
 
 ### Objetivo
 
-	Olá Houser, tudo bem com você? Esta atividade tem como objetivo servir como primeiro instrumento avaliativo da disciplina de Front-end III. Se atente às instruções e boa avaliação. 
+Olá Houser, tudo bem com você? Esta atividade tem como objetivo servir como primeiro instrumento avaliativo da disciplina de Front-end III. Se atente às instruções e boa avaliação. 
 
 O entregável será uma página em HTML5, CSS3, Bootstrap, e React.
 

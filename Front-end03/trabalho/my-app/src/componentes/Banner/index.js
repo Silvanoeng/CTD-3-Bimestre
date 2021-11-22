@@ -1,20 +1,18 @@
 import React, { Component } from 'react'
-import './style.css'
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { Carousel } from 'react-bootstrap';
+import './style.scss'
+import '../../container/App.scss';
 import slide01 from "../../Img/foto01.jpg"
 import slide02 from "../../Img/foto02.jpg"
-import slide03 from "../../Img/foto03.jpg"
+import slide03 from "../../Img/foto05.jpg"
 import slide04 from "../../Img/foto04.jpg"
-
-
 
 export default class BannerCarousel extends Component {
     listaDeDados = [
         {
             id: 1,
             titulo: 'Minhas origens...',
-            texto: 'Sou natural de Mostardas/RS, filho do seu Helio (mestre de obras) e dona Percilia (costureira), irmão da Vania (funcionária páblica).',
+            texto: 'Sou natural de Mostardas/RS, filho do seu Helio (mestre de obras) e dona Percilia (costureira), irmão da Vania (funcionária pública).',
             slide: slide01,
             desFoto: 'Paisagem de um farol'
         },
@@ -34,7 +32,7 @@ export default class BannerCarousel extends Component {
         },
         {
             id: 4,
-            titulo: 'Novos objetivos...',
+            titulo: 'Novas perspectivas...',
             texto: 'Em maio de 2021 se inicia minha transição de carreira para a área de tecnologia, onde o ponto de partida foi o curso Certified Tech Developer na Digital House.',
             slide: slide04,
             desFoto: 'Paisagem de uma noite estrelada, com um homem segurando um espelho que reflete o céu.'
@@ -51,7 +49,7 @@ export default class BannerCarousel extends Component {
                                 <img className='img-fluid d-block' src={parametro.slide} alt={parametro.desFoto} />
                                 <Carousel.Caption className='textoCarousel d-none d-md-block'>
                                     <h3>{parametro.titulo}</h3>
-                                    <p>{parametro.texto}</p>
+                                    <p className='texBanner'>{parametro.texto}</p>
                                 </Carousel.Caption>
                             </Carousel.Item>
                         )
@@ -62,4 +60,3 @@ export default class BannerCarousel extends Component {
         )
     }
 }
-

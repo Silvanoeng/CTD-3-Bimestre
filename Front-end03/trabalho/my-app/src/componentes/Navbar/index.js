@@ -1,7 +1,7 @@
-import './style.css';
 import React, { useState} from 'react';
 import { Navbar, Nav, Container } from 'react-bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import './style.scss';
+import '../../container/App.scss';
 
 const Nave = () => {
     
@@ -15,11 +15,10 @@ const Nave = () => {
         }
     };
     
-    
     window.addEventListener('scroll', navBackground);
 
     return (
-        <Navbar className= {navbar ? "navbar-shrink-light navbar navbar-light fixed-top navbar-expand-lg navbar-dark ps-3" : "navbarCor navbar navbar-light fixed-top navbar-expand-lg navbar-dark ps-3"} bg="light" expand="lg" >
+        <Navbar className= {navbar ? "navbar-shrink-light fixed-top navbar-expand-lg navbar-light bg-light ps-3" : " navbar fixed-top navbar-expand-lg navbar-light  ps-3"}  expand="lg" >
             <Container>
                 <Navbar.Brand className={navbar ? 'navLogo navcor': 'navLogo navcor2'} href="#inicio">Silvano A. P.</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />

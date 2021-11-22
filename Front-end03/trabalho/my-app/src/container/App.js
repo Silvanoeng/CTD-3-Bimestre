@@ -1,20 +1,16 @@
-import './style.css';
 import React from "react"
+import Nave from '../componentes/Navbar/index';
 import BannerCarousel from '../componentes/Banner/index';
 import CardsProjetos from '../componentes/Cards/index';
-import Footer from '../componentes/Footer/index';
-import Nave from '../componentes/Navbar/index';
 import Curriculo from '../componentes/Curriculo/index';
-import 'bootstrap/dist/css/bootstrap.min.css';
-
+import Footer from '../componentes/Footer/index';
+import './App.scss';
 
 function App() {
-  
   return (
     <>
-      
+
       <Nave/>
-      
       
       <BannerCarousel/>
 
@@ -22,8 +18,7 @@ function App() {
       
       <Curriculo/>
 
-      
-      {/* <Footer/> */}
+      <Footer/>
       
     </>
   );

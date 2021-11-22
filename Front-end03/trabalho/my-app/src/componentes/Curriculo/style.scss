@@ -1,0 +1,14 @@
+
+.uniDisquete{
+    transition: 0.5s;
+    animation: ease-in-out;
+    min-width: 3rem;
+    max-width: 6rem;
+    &:hover{
+        transform: scale(1.2);
+        z-index: 100;
+    }
+    @media (max-width: 321px){
+        max-width: 4rem;
+    }
+}

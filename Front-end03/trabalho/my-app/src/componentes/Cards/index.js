@@ -1,14 +1,11 @@
 import React, { Component } from 'react'
-import { Card, Button, CardGroup, Stack, Row, Col, Container } from 'react-bootstrap';
-import './style.css'
-import 'bootstrap/dist/css/bootstrap.min.css';
+import { Card, Button, CardGroup, Stack, Container } from 'react-bootstrap';
+import './style.scss'
+import '../../container/App.scss';
 import img01 from "../../Img/site01.png"
 import img02 from "../../Img/site02.png"
 import img03 from "../../Img/site03.png"
 import img04 from "../../Img/site04.png"
-
-
-
 
 export default class CardsProjetos extends Component {
     lista = [
@@ -66,7 +63,7 @@ export default class CardsProjetos extends Component {
                         this.lista.map((parametro) => {
                             return (
                                 <Card border="light" className='uniCard m-5' style={{ width: "18rem" }}    key={parametro.id} >
-                                    <Card.Img variant="top" src={parametro.img} alt= {parametro.desFoto} thumbnail/>
+                                    <Card.Img className='fotos' variant="top" src={parametro.img} alt= {parametro.desFoto} thumbnail/>
                                     <Card.Body>
                                         <Card.Title className='text-center'>{parametro.titulo}</Card.Title>
                                         <Card.Text >
@@ -90,4 +87,3 @@ export default class CardsProjetos extends Component {
         )
     }
 }
-

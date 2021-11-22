@@ -39,8 +39,11 @@ $corTrans: rgba(0,0,0,0) !important;
         color: $corQua; 
     }
 }
-.bg-light{
-    background-color: $corSec;
+.container{
+    background-color: $corClara;
+    @media (min-width: 992px){
+        background-color: transparent !important;    
+    }
 }
 .navbarCor {
     background-color: $corClara;
@@ -52,7 +55,7 @@ $corTrans: rgba(0,0,0,0) !important;
     color:  $corSec;
     &:hover{
         color:  $corQua;
-    }    
+    }   
 }
 .navbar-toggler {
     background-color: $corSec;

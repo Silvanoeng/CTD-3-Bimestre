@@ -22,6 +22,6 @@ Para esse projeto, você deverá construir uma landing page componentizada de po
 
 5- A última seção do site será um footer com informações de contato. (Linkedin, Github e email). Esses itens deverão utilizar ícones para fazer o redirecionamento.
 
-###Site no Vercel:
+### Site no Vercel:
 
 https://silvano-portfolio.vercel.app/

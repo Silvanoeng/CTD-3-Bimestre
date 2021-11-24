@@ -1,13 +1,27 @@
 
-## Mesa de Trabalho - Aula 5
-### Fragments e Props
+## Checkpoint 01 -  Front-end III
 
-Agora que sabemos sobre o Props e fragments e o que podem fazer, vamos fazer um exercício.
+### Objetivo
 
-Vamos utilizar um novo projeto onde precisamos imprimir alguns elementos na nossa tela. Crie um componente de header que contém a logo do site (pode ser um texto ou uma imagem) e alguns itens. Crie um componente de banner que vai ter um background image da sua escolha, mas que receba o texto e um botão via props.children. Depois crie um elemento de footer que vai receber o nome da empresa do site via props com o nome da sua escolha.
+Olá Houser, tudo bem com você? Esta atividade tem como objetivo servir como primeiro instrumento avaliativo da disciplina de Front-end III. Se atente às instruções e boa avaliação. 
 
-Para mais informações: 
+O entregável será uma página em HTML5, CSS3, Bootstrap, e React.
 
-https://es.reactjs.org/docs/render-props.html,
+### Instruções e requisitos do entregável
+	
+	
+Para esse projeto, você deverá construir uma landing page componentizada de portfólio com seus link e projetos. O site deverá seguir os seguintes requisitos:
 
-https://pt-br.reactjs.org/docs/fragments.html
+1- O projeto deve ser feito com Bootstrap e SASS.
+ 
+2- A landing page deve ter um header com uma logo ou texto e itens que fazem link com as seções do site.
+
+3- A segunda seção deverá ser um banner com uma imagem de fundo que conterá um texto de descrição falando um pouco sobre você e uma foto sua.
+
+4- Logo depois do banner, haverá a seção de projetos feitos dentro e fora da DH (Esses projetos podem ser fictícios). Essa lista, deverá ser renderizada a partir de um .map(). Os projetos deverão ser listados em formato de cards, uma imagem com o título e os links para o github e para o site desses projetos (escolha um ícone para quando clicado, ocorra o redirecionamento). Projetos a serem listados, no mínimo 3.
+
+5- A última seção do site será um footer com informações de contato. (Linkedin, Github e email). Esses itens deverão utilizar ícones para fazer o redirecionamento.
+
+### Site no Vercel:
+
+https://silvano-portfolio.vercel.app/

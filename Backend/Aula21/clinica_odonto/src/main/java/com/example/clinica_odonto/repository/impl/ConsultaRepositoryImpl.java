@@ -47,4 +47,40 @@ public class ConsultaRepositoryImpl implements IRepositoryDTO<Consulta> {
                     pacienteRepository.buscarPorId(consultaDTO.getIdPac()));
         return null;
     }
+
+    @Override
+    public Map<Integer, Consulta> buscarTodos() {
+        if (consultaDTOMap != null) {
+            Map<Integer, Consulta> consultaMap = new HashMap<>();
+            for (Map.Entry<Integer, ConsultaDTO> itemDoFor : consultaDTOMap.entrySet()) {
+                Consulta consulta = new Consulta(itemDoFor.getValue(), dentistaRepository.buscarPorId(itemDoFor.getValue().getIdDen()),
+                        pacienteRepository.buscarPorId(itemDoFor.getValue().getIdPac()));
+                consultaMap.put(itemDoFor.getKey(), consulta);
+            }
+            return consultaMap;
+        }
+        return null;
+    }
+
+    @Override
+    public void deletar(Integer id) {
+        consultaDTOMap.remove(id);
+    }
+
+    @Override
+    public Consulta atualizar(Integer id, Consulta consultaAtualizar) {
+        if(consultaAtualizar == null)
+            return null;
+
+        Consulta consultaBancoDeDados = buscarPorId(id);
+        if (consultaAtualizar.getDentista() != null)
+            consultaBancoDeDados.setDentista(consultaAtualizar.getDentista());
+        if (consultaAtualizar.getPaciente() != null)
+            consultaBancoDeDados.setPaciente(consultaAtualizar.getPaciente());
+        if (consultaAtualizar.getDataHora() != null)
+            consultaBancoDeDados.setDataHora(consultaAtualizar.getDataHora());
+        ConsultaDTO consultaNova = new ConsultaDTO(consultaBancoDeDados);
+        consultaDTOMap.put(id,consultaNova);
+        return consultaBancoDeDados;
+    }
 }

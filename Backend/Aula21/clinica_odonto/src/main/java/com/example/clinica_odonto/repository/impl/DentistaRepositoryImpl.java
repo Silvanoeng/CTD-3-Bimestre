@@ -1,8 +1,6 @@
 package com.example.clinica_odonto.repository.impl;
 
-import com.example.clinica_odonto.dto.ConsultaDTO;
 import com.example.clinica_odonto.dto.DentistaDTO;
-import com.example.clinica_odonto.model.Consulta;
 import com.example.clinica_odonto.model.Dentista;
 import com.example.clinica_odonto.repository.IRepositoryDTO;
 import java.util.HashMap;

@@ -1,8 +1,6 @@
 package com.example.clinica_odonto.repository.impl;
 
-import com.example.clinica_odonto.dto.DentistaDTO;
 import com.example.clinica_odonto.dto.PacienteDTO;
-import com.example.clinica_odonto.model.Dentista;
 import com.example.clinica_odonto.model.Paciente;
 import com.example.clinica_odonto.repository.IRepositoryDTO;
 import java.util.HashMap;
@@ -39,6 +37,14 @@ public class PacienteRepositoryImpl implements IRepositoryDTO<Paciente> {
 
     @Override
     public Map<Integer, Paciente> buscarTodos() {
+        if (pacienteDTOMap != null) {
+            Map<Integer, Paciente> pacienteMap = new HashMap<>();
+            for (Map.Entry<Integer, PacienteDTO> itemdoFor : pacienteDTOMap.entrySet()) {
+                Paciente paciente = new Paciente(itemdoFor.getValue(), enderecoRepository.buscarPorId(itemdoFor.getValue().getIdEndereco()));
+                pacienteMap.put(itemdoFor.getKey(), paciente);
+            }
+            return pacienteMap;
+        }
         return null;
     }
 
@@ -63,22 +69,10 @@ public class PacienteRepositoryImpl implements IRepositoryDTO<Paciente> {
             pacienteBancoDeDados.setCpf(pacienteAtualizar.getCpf());
         if (pacienteAtualizar.getEmail() != null)
             pacienteBancoDeDados.setEmail(pacienteAtualizar.getEmail());
-
+        if (pacienteAtualizar.getEndereco() != null)
+            enderecoRepository.atualizar(pacienteBancoDeDados.getEndereco().getId(), pacienteAtualizar.getEndereco());
+        PacienteDTO pacienteNovo = new PacienteDTO(pacienteBancoDeDados);
+        pacienteDTOMap.put(id, pacienteNovo);
+        return pacienteBancoDeDados;
     }
 }
-    @Override
-    public Dentista atualizar(Integer id, Dentista dentistaAtualizar) {
-        if (dentistaAtualizar == null)
-            return null;
-
-        Dentista dentistaBancoDeDados = buscarPorId(id);
-        if (dentistaAtualizar.getMatricula() != null)
-            dentistaBancoDeDados.setMatricula(dentistaAtualizar.getMatricula());
-        if (dentistaAtualizar.getNome() != null)
-            dentistaBancoDeDados.setNome(dentistaAtualizar.getNome());
-        if (dentistaAtualizar.getSobrenome() != null)
-            dentistaBancoDeDados.setSobrenome(dentistaAtualizar.getSobrenome());
-        DentistaDTO dentistaNovo = new DentistaDTO(dentistaBancoDeDados);
-        dentistaDTOMap.put(id, dentistaNovo);
-        return dentistaBancoDeDados;
-    }

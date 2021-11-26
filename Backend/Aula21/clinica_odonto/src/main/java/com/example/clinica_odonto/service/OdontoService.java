@@ -5,7 +5,7 @@ import java.util.Map;
 public interface OdontoService<T> {
     T salvar(T t);
     T buscarPorId(Integer id);
-    Map<T> buscarTodos();
-    Void deletar(Integer id);
-    T atualizar(Integer id);
+    Map<Integer, T> buscarTodos();
+    void deletar(Integer id);
+    T atualizar(Integer id, T t);
 }

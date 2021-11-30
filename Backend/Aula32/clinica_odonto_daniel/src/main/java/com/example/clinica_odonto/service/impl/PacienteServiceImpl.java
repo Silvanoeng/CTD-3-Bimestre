@@ -1,0 +1,42 @@
+package com.example.clinica_odonto.service.impl;
+
+import com.example.clinica_odonto.model.Paciente;
+import com.example.clinica_odonto.repository.impl.PacienteRepositoryImpl;
+import com.example.clinica_odonto.service.OdontoService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.Map;
+
+@Service
+public class PacienteServiceImpl implements OdontoService<Paciente> {
+    private PacienteRepositoryImpl pacienteRepository;
+
+    @Autowired
+    public PacienteServiceImpl(){this.pacienteRepository = new PacienteRepositoryImpl();}
+
+    @Override
+    public PacienteDTO salvar(Paciente paciente) {
+        return pacienteRepository.salvar(paciente);
+    }
+
+    @Override
+    public Paciente buscarPorId(Integer id) {
+        return pacienteRepository.buscarPorId(id);
+    }
+
+    @Override
+    public Map<Integer, Paciente> buscarTodos() {
+        return pacienteRepository.buscarTodos();
+    }
+
+    @Override
+    public void deletar(Integer id) {
+        pacienteRepository.deletar(id);
+    }
+
+    @Override
+    public Paciente atualizar(Integer id, Paciente paciente) {
+        return pacienteRepository.atualizar(id, paciente);
+    }
+}

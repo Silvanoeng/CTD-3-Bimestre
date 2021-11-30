@@ -21,6 +21,7 @@ public class ProfessorEntity {
     @Column(name="nome")
     private String nome;
 
+
     @Column(name = "curso")
     private String curso;
 

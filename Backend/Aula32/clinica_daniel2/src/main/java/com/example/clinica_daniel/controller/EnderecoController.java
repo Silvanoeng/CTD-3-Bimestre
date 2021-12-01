@@ -15,6 +15,12 @@ public class EnderecoController {
     @Autowired
     private EnderecoServiceImpl enderecoService;
 
+    @ExceptionHandler
+    @ResponseBody
+    public String dummyExceptionHandler(Exception e) {
+        return e.getMessage();
+    }
+
     @PostMapping
     public ResponseEntity<EnderecoDTO> salvarEndereco(@RequestBody EnderecoDTO endereco) {
         return ResponseEntity.ok(enderecoService.salvar(endereco));

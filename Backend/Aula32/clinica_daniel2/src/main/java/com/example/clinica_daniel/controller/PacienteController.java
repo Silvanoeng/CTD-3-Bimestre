@@ -22,7 +22,11 @@ public class PacienteController {
     @Autowired
     private EnderecoServiceImpl enderecoService;
 
-//    PacienteDTO paciente, @RequestBody EnderecoDTO endereco
+    @ExceptionHandler
+    @ResponseBody
+    public String dummyExceptionHandler(Exception e) {
+        return e.getMessage();
+    }
 
     @PostMapping
     public ResponseEntity<PacienteDTO> salvarPaciente(@RequestBody PacEndDTO pacEndDTO) {
@@ -59,10 +63,13 @@ public class PacienteController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity alterar(@PathVariable Integer id, @RequestBody PacienteDTO paciente, @RequestBody EnderecoDTO endereco) {
+    public ResponseEntity alterar(@PathVariable Integer id, @RequestBody PacEndDTO pacEndDTO) {
 
+        PacienteDTO paciente = new PacienteDTO(pacEndDTO);
+        PacienteDTO pacienteDTO = pacienteService.buscarPorId(id);
+
+        enderecoService.atualizar(pacienteDTO.getIdEndereco(), pacEndDTO.getEnderecoDTO());
         PacienteDTO pacienteAlterado = pacienteService.atualizar(id, paciente);
-        EnderecoDTO enderecoAlterado = enderecoService.atualizar(pacienteAlterado.getIdEndereco(), endereco);
 
         if (pacienteAlterado != null)
             return ResponseEntity.ok(pacienteAlterado);

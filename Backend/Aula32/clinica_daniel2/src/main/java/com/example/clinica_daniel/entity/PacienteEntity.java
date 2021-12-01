@@ -26,7 +26,7 @@ public class PacienteEntity {
     @Column(name="email")
     private String email;
 
-    @Column(name="cpf", unique = true)
+    @Column(name="cpf")
     private String cpf;
 
     @OneToOne(fetch= FetchType.EAGER, cascade=CascadeType.REMOVE)

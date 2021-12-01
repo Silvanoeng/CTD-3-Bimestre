@@ -15,11 +15,11 @@ public class DentistaController {
     @Autowired
     private DentistaServiceImpl dentistaService;
 
-//    @ExceptionHandler
-//    @ResponseBody
-//    public String dummyExceptionHandler(Exception e) {
-//        return e.getMessage();
-//    }
+    @ExceptionHandler
+    @ResponseBody
+    public String dummyExceptionHandler(Exception e) {
+        return e.getMessage();
+    }
 
     @PostMapping
     public ResponseEntity<DentistaDTO> salvar(@RequestBody DentistaDTO dentistaDTO) {
@@ -31,9 +31,9 @@ public class DentistaController {
 
         DentistaDTO dentista = dentistaService.buscarPorId(id);
 
-        if (dentista != null) {
-            return ResponseEntity.ok(dentista);
-        }
+            if (dentista != null) {
+                return ResponseEntity.ok(dentista);
+            }
 
         return ResponseEntity.badRequest().body("Dentista não encontrado");
     }

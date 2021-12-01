@@ -5,6 +5,8 @@ import com.example.clinica_daniel.dto.DentistaDTO;
 import com.example.clinica_daniel.entity.DentistaEntity;
 import com.example.clinica_daniel.repository.DentistaRepository;
 import com.example.clinica_daniel.service.OdontoService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
@@ -13,6 +15,8 @@ import java.util.List;
 @Service
 public class DentistaServiceImpl implements OdontoService<DentistaDTO> {
     private final DentistaRepository dentistaRepository;
+    private static final Logger LOG = LoggerFactory.getLogger(DentistaServiceImpl.class);
+
 
     @Autowired
     public DentistaServiceImpl(DentistaRepository dentistaRepository){this.dentistaRepository = dentistaRepository;}
@@ -22,7 +26,7 @@ public class DentistaServiceImpl implements OdontoService<DentistaDTO> {
         DentistaEntity dentista = new DentistaEntity(dentistaDTO);
         dentistaRepository.save(dentista);
         DentistaDTO dentistaDTOSaida = new DentistaDTO(dentista);
-
+        LOG.info("Dentista criado com sucesso.");
         return dentistaDTOSaida;
     }
 
@@ -31,8 +35,10 @@ public class DentistaServiceImpl implements OdontoService<DentistaDTO> {
         DentistaEntity dentista = dentistaRepository.getById(id);
         if (dentista !=null) {
             DentistaDTO dentistaDTOSaida = new DentistaDTO(dentista);
+            LOG.info("Busca a dentista, realizada com sucesso.");
             return dentistaDTOSaida;
         }
+        LOG.info("Busca a dentista, falhou.");
         return null;
     }
 
@@ -45,6 +51,7 @@ public class DentistaServiceImpl implements OdontoService<DentistaDTO> {
                 DentistaDTO dentistaDTO = new DentistaDTO(dentistaEntity);
                 listaDentistaDTO.add(dentistaDTO);
             }
+            LOG.info("Listar dentistas, realizado com sucesso.");
             return listaDentistaDTO;
         }
         return null;
@@ -52,6 +59,7 @@ public class DentistaServiceImpl implements OdontoService<DentistaDTO> {
 
     @Override
     public void deletar(Integer id) {
+        LOG.info("Dentista deletado com sucesso.");
         dentistaRepository.deleteById(id);
     }
 
@@ -74,7 +82,7 @@ public class DentistaServiceImpl implements OdontoService<DentistaDTO> {
             dentistaAtualizado.setSobrenome(dentistaMudancas.getSobrenome());
 
         DentistaDTO dentistaDTOAtualizado = new DentistaDTO (dentistaRepository.saveAndFlush(dentistaAtualizado));
-
+        LOG.info("Dentista atualizado com sucesso.");
         return dentistaDTOAtualizado;
     }
 

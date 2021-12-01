@@ -6,6 +6,8 @@ import com.example.clinica_daniel.entity.PacienteEntity;
 import com.example.clinica_daniel.repository.EnderecoRepository;
 import com.example.clinica_daniel.repository.PacienteRepository;
 import com.example.clinica_daniel.service.OdontoService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +18,7 @@ import java.util.List;
 public class PacienteServiceImpl implements OdontoService<PacienteDTO> {
     private final PacienteRepository pacienteRepository;
     private final EnderecoRepository enderecoRepository;
+    private static final Logger LOG = LoggerFactory.getLogger(PacienteServiceImpl.class);
 
     @Autowired
     public PacienteServiceImpl(PacienteRepository pacienteRepository, EnderecoRepository enderecoRepository){
@@ -29,6 +32,7 @@ public class PacienteServiceImpl implements OdontoService<PacienteDTO> {
         PacienteEntity paciente = new PacienteEntity(pacienteDTO, endereco);
         pacienteRepository.save(paciente);
         PacienteDTO pacienteDTOSaida = new PacienteDTO(paciente);
+        LOG.info("Paciente criado com sucesso.");
         return pacienteDTOSaida;
     }
 
@@ -37,6 +41,7 @@ public class PacienteServiceImpl implements OdontoService<PacienteDTO> {
         PacienteEntity paciente = pacienteRepository.getById(id);
         if (paciente != null) {
             PacienteDTO pacienteDTOSaida = new PacienteDTO(paciente);
+            LOG.info("Busca paciente, realizada com sucesso.");
             return pacienteDTOSaida;
         }
         return null;
@@ -51,13 +56,17 @@ public class PacienteServiceImpl implements OdontoService<PacienteDTO> {
                 PacienteDTO pacienteDTO = new PacienteDTO(pacienteEntity);
                 listaPacienteDTO.add(pacienteDTO);
             }
+            LOG.info("Listar pacientes, realizado com sucesso.");
             return listaPacienteDTO;
         }
         return null;
     }
 
     @Override
-    public void deletar(Integer id) { pacienteRepository.deleteById(id); }
+    public void deletar(Integer id) {
+        LOG.info("Endereço deletado com sucesso.");
+        pacienteRepository.deleteById(id);
+    }
 
     @Override
     public PacienteDTO atualizar(Integer id, PacienteDTO pacienteDTO) {
@@ -80,7 +89,7 @@ public class PacienteServiceImpl implements OdontoService<PacienteDTO> {
             pacienteAtualizado.setEmail(pacienteMudancas.getEmail());
 
         PacienteDTO pacienteDTOAtualizado = new PacienteDTO(pacienteRepository.saveAndFlush(pacienteAtualizado));
-
+        LOG.info("Paciente atualizado com sucesso.");
         return pacienteDTOAtualizado;
     }
 }

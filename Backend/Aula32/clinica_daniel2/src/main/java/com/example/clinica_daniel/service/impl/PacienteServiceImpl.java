@@ -92,4 +92,15 @@ public class PacienteServiceImpl implements OdontoService<PacienteDTO> {
         LOG.info("Paciente atualizado com sucesso.");
         return pacienteDTOAtualizado;
     }
+
+    public PacienteDTO buscarPorIdEntity(Integer id) {
+        PacienteEntity paciente = pacienteRepository.getById(id);
+        if (paciente != null) {
+            PacienteDTO pacienteDTOSaida = new PacienteDTO(paciente);
+            LOG.info("Busca paciente, realizada com sucesso.");
+            return pacienteDTOSaida;
+        }
+        return null;
+    }
+
 }

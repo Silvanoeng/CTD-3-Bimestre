@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.jar.Attributes;
 
 @Service
 public class DentistaServiceImpl implements OdontoService<DentistaDTO> {
@@ -24,7 +25,7 @@ public class DentistaServiceImpl implements OdontoService<DentistaDTO> {
     @Override
     public DentistaDTO salvar(DentistaDTO dentistaDTO) {
         DentistaEntity dentista = new DentistaEntity(dentistaDTO);
-        dentistaRepository.save(dentista);
+        dentistaRepository.saveAndFlush(dentista);
         DentistaDTO dentistaDTOSaida = new DentistaDTO(dentista);
         LOG.info("Dentista criado com sucesso.");
         return dentistaDTOSaida;
@@ -84,6 +85,10 @@ public class DentistaServiceImpl implements OdontoService<DentistaDTO> {
         DentistaDTO dentistaDTOAtualizado = new DentistaDTO (dentistaRepository.saveAndFlush(dentistaAtualizado));
         LOG.info("Dentista atualizado com sucesso.");
         return dentistaDTOAtualizado;
+    }
+
+    public List<String> listandoNomes() {
+        List<String> = dentistaRepository.findAll(DentistaEntity<String> na)
     }
 
 

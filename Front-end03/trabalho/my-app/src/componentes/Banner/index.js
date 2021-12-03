@@ -45,7 +45,7 @@ export default class BannerCarousel extends Component {
                 {
                     this.listaDeDados.map((parametro) => {
                         return (
-                            <Carousel.Item key={parametro.id}>
+                            <Carousel.Item key={parametro.id} interval={1000}>
                                 <img className='img-fluid d-block' src={parametro.slide} alt={parametro.desFoto} />
                                 <Carousel.Caption className='textoCarousel d-none d-md-block'>
                                     <h3>{parametro.titulo}</h3>
